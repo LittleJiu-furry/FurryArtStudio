@@ -1,11 +1,9 @@
-﻿# 读取 vbproj 版本号
-$vbproj = Get-ChildItem -Filter *.vbproj | Select-Object -First 1
-[xml]$projXml = Get-Content $vbproj.FullName
+﻿$assemblyInfo = Get-Content ".\My Project\AssemblyInfo.vb"
 
-$version = $projXml.Project.PropertyGroup.Version
-if (-not $version) {
-    Write-Host "Version not found in vbproj."
-    exit 1
+$versionLine = $assemblyInfo | Where-Object { $_ -match "AssemblyVersion" }
+
+if ($versionLine -match '"([\d\.]+)"') {
+    $version = $matches[1]
 }
 
 Write-Host "Detected version: $version"

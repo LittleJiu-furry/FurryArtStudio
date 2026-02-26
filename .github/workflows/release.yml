@@ -70,6 +70,9 @@ jobs:
         # 复制子文件夹
         Copy-Item -Recurse "$releasePath\x64" $packagePath
         Copy-Item -Recurse "$releasePath\x86" $packagePath
+        Copy-Item -Recurse "$releasePath\en-US" $packagePath
+        Copy-Item -Recurse "$releasePath\zh-Hans" $packagePath
+        Copy-Item -Recurse "$releasePath\zh-Hant" $packagePath
 
         Write-Host "Files prepared for packaging:"
         Get-ChildItem -Recurse $packagePath

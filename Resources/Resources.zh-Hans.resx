@@ -214,7 +214,7 @@
     <value>选项(&amp;O)...</value>
   </data>
   <data name="Mnu_Properties" xml:space="preserve">
-    <value>统计信息(&amp;I)...</value>
+    <value>统计信息(&amp;S)...</value>
   </data>
   <data name="Stat_Loading" xml:space="preserve">
     <value>正在载入数据...</value>
@@ -235,10 +235,10 @@
     <value>正在搜索...</value>
   </data>
   <data name="Msg_ElevatedFailed" xml:space="preserve">
-    <value>权限提升失败: {ex.Message}</value>
+    <value>权限提升失败: {0}</value>
   </data>
   <data name="Msg_TerminalFailed" xml:space="preserve">
-    <value>命令提示符启动失败: {ex.Message}</value>
+    <value>命令提示符启动失败: {0}</value>
   </data>
   <data name="Input_NewLibTitle" xml:space="preserve">
     <value>新建稿件库</value>
@@ -274,7 +274,7 @@
     <value>正在重命名稿件库...</value>
   </data>
   <data name="Msg_CreateFailed" xml:space="preserve">
-    <value>创建失败: {ex.Message}</value>
+    <value>创建失败: {0}</value>
   </data>
   <data name="Stat_DeletingLib" xml:space="preserve">
     <value>正在删除稿件库...</value>
@@ -307,7 +307,7 @@
     <value>你希望将稿件库 {0} 移到回收站吗?</value>
   </data>
   <data name="Msg_LibDeleteFailed" xml:space="preserve">
-    <value>稿件库删除失败: {ex.Message}</value>
+    <value>稿件库删除失败: {0}</value>
   </data>
   <data name="Main_StrPropLib" xml:space="preserve">
     <value>稿件库: {0}</value>
@@ -340,10 +340,10 @@
     <value>正在打印...</value>
   </data>
   <data name="Msg_PrintFailed" xml:space="preserve">
-    <value>打印时出错: {ex.Message}</value>
+    <value>打印时出错: {0}</value>
   </data>
   <data name="Msg_ImageLoadFailed" xml:space="preserve">
-    <value>无法加载图片: {ex.Message}</value>
+    <value>无法加载图片: {0}</value>
   </data>
   <data name="Msg_MultiFolderOpen" xml:space="preserve">
     <value>您将同时打开{0}个文件夹, 确定要继续吗?</value>
@@ -370,13 +370,13 @@
     <value> - UUID: {0}</value>
   </data>
   <data name="Msg_StrMsUpdate" xml:space="preserve">
-    <value> - 更新时间: {0}</value>
+    <value> - 更新时间: {0:yyyy-MM-dd HH:mm:ss}</value>
   </data>
   <data name="Msg_StrMsImport" xml:space="preserve">
-    <value> - 入库时间: {0}</value>
+    <value> - 入库时间: {0:yyyy-MM-dd HH:mm:ss}</value>
   </data>
   <data name="Msg_StrMsCreate" xml:space="preserve">
-    <value> - 创作时间: {0}</value>
+    <value> - 创作时间: {0:yyyy-MM-dd HH:mm:ss}</value>
   </data>
   <data name="Msg_StrMsTags" xml:space="preserve">
     <value> - 标签: {0}</value>
@@ -432,9 +432,6 @@
   <data name="Msg_NoImg" xml:space="preserve">
     <value>当前稿件没有图片文件</value>
   </data>
-  <data name="Msg_OpenImgFailed" xml:space="preserve">
-    <value>打开图片窗口时出错: {ex.Message}</value>
-  </data>
   <data name="Print_Title" xml:space="preserve">
     <value>打印</value>
   </data>
@@ -481,7 +478,7 @@
     <value>在此处打开终端(&amp;T)</value>
   </data>
   <data name="Mnu_Exit" xml:space="preserve">
-    <value>退出(&amp;C)</value>
+    <value>退出(&amp;X)</value>
   </data>
   <data name="Mnu_CurrentLib" xml:space="preserve">
     <value>当前库(&amp;U)</value>
@@ -511,7 +508,7 @@
     <value>复制目录路径(&amp;T)</value>
   </data>
   <data name="Mnu_Close" xml:space="preserve">
-    <value>关闭(&amp;X)</value>
+    <value>关闭(&amp;C)</value>
   </data>
   <data name="Mnu_Rename" xml:space="preserve">
     <value>重命名(&amp;M)...</value>
@@ -520,7 +517,7 @@
     <value>删除(&amp;D)...</value>
   </data>
   <data name="Mnu_FormProperties" xml:space="preserve">
-    <value>统计信息(&amp;P)...</value>
+    <value>统计信息(&amp;S)...</value>
   </data>
   <data name="Mnu_View" xml:space="preserve">
     <value>预览(&amp;V)</value>
@@ -553,7 +550,7 @@
     <value>下一页(&amp;N)</value>
   </data>
   <data name="Mnu_Tutorial" xml:space="preserve">
-    <value>快速入门(&amp;T)</value>
+    <value>教程(&amp;T)</value>
   </data>
   <data name="Mnu_Website" xml:space="preserve">
     <value>官网(&amp;W)</value>
@@ -562,7 +559,7 @@
     <value>&amp;GitHub</value>
   </data>
   <data name="Mnu_WhatsNew" xml:space="preserve">
-    <value>新增功能(&amp;H)</value>
+    <value>新增功能(&amp;W)</value>
   </data>
   <data name="Mnu_CheckUpdate" xml:space="preserve">
     <value>检查更新(&amp;U)</value>
@@ -574,7 +571,7 @@
     <value>隐私政策(&amp;P)...</value>
   </data>
   <data name="Mnu_Terms" xml:space="preserve">
-    <value>用户协议(&amp;T)</value>
+    <value>用户协议(&amp;T)...</value>
   </data>
   <data name="Mnu_File" xml:space="preserve">
     <value>文件(&amp;F)</value>
@@ -593,5 +590,8 @@
   </data>
   <data name="About_BtnOK" xml:space="preserve">
     <value>确定(&amp;O)</value>
+  </data>
+  <data name="Main_LblSearchedMs" xml:space="preserve">
+    <value>已搜到{0}个稿件</value>
   </data>
 </root>

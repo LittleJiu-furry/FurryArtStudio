@@ -40,7 +40,7 @@ Public Class MainForm
     Private Const SC_REFRESH = 3 '刷新
     Private Const SC_PLAY = 4 '幻灯片放映
     Private Const SC_SETTINGS = 5 '选项
-    Private Const SC_PROPERTIES = 6 '统计信息
+    Private Const SC_STATISTICS = 6 '统计信息
     Private Const SC_ABOUT = 7 '关于
     '用于主题消息变更消抖
     Private WithEvents _themeDebounceTimer As New Timer With {
@@ -54,7 +54,7 @@ Public Class MainForm
     ''' 程序启动时调用
     ''' </summary>
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        StatusLabel.Text = "正在初始化..."
+        StatusLabel.Text = My.Resources.Stat_Init '正在初始化
         _libraryManager = LibraryManager.Instance '启动稿件库管理器实例
         MenuInit() '初始化菜单
         ResizeControl() '调整组件尺寸
@@ -69,7 +69,7 @@ Public Class MainForm
 #Else
         MnuDevTools.Enabled = False
 #End If
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready '就绪
         SystemThemeChange() '设置主题
 
         SetTitleBarColor(Handle, IconColorLight) '修改标题栏颜色(win11生效)
@@ -108,11 +108,11 @@ Public Class MainForm
                 Case SC_PLAY
                     '待开发
                 Case SC_SETTINGS
-                    StatusLabel.Text = "设置首选项"
+                    StatusLabel.Text = My.Resources.Stat_OpenProp
                     PropertiesForm.ShowDialog()
-                    StatusLabel.Text = "就绪"
-                Case SC_PROPERTIES
-                    ShowLibProperties()
+                    StatusLabel.Text = My.Resources.Stat_Ready
+                Case SC_STATISTICS
+                    ShowLibStatistics()
                 Case SC_ABOUT
                     AboutForm.ShowDialog()
             End Select
@@ -166,7 +166,7 @@ Public Class MainForm
     ''' 语言变更
     ''' </summary>
     Private Sub LanguageChange() Implements ILocalizable.LanguageChange
-        '菜单
+        '文件
         MnuFile.Text = My.Resources.Mnu_File
         MnuOnTop.Text = My.Resources.Mnu_AlwaysOnTop
         MnuDevTools.Text = My.Resources.Mnu_DevTools
@@ -174,6 +174,7 @@ Public Class MainForm
         MnuRunTerminal.Text = My.Resources.Mnu_OpenTerminal
         MnuProperties.Text = My.Resources.Mnu_Options
         MnuExit.Text = My.Resources.Mnu_Exit
+        '稿件库
         MnuLibrary.Text = My.Resources.Mnu_Lib
         MnuLibList.Text = My.Resources.Mnu_CurrentLib
         MnuLibRefresh.Text = My.Resources.Mnu_Refresh
@@ -188,7 +189,41 @@ Public Class MainForm
         MnuLibClose.Text = My.Resources.Mnu_Close
         MnuLibRename.Text = My.Resources.Mnu_Rename
         MnuLibDelete.Text = My.Resources.Mnu_Delete
-        MnuLibProperties.Text = My.Resources.Mnu_Properties
+        MnuLibStatistics.Text = My.Resources.Mnu_Properties
+        '稿件
+        MnuManuscript.Text = My.Resources.Mnu_Ms
+        MnuMsNew.Text = My.Resources.Mnu_New
+        MnuMsImport.Text = My.Resources.Mnu_Import
+        MnuMsView.Text = My.Resources.Mnu_View
+        MnuMsEdit.Text = My.Resources.Mnu_Edit
+        MnuMsExport.Text = My.Resources.Mnu_ExportMs
+        MnuMsPrint.Text = My.Resources.Mnu_Print
+        MnuMsDelete.Text = My.Resources.Mnu_Delete
+        MnuMsOpenFolder.Text = My.Resources.Mnu_OpenPath
+        MnuMsCopy.Text = My.Resources.Mnu_Copy
+        MnuMsCopyPath.Text = My.Resources.Mnu_CopyPath
+        '视图
+        MnuViews.Text = My.Resources.Mnu_Views
+        MnuViewPlay.Text = My.Resources.Mnu_Play
+        MnuSelectAll.Text = My.Resources.Mnu_SelectAll
+        MnuSelectReverse.Text = My.Resources.Mnu_SelectReverse
+        MnuSearch.Text = My.Resources.Mnu_Search
+        MnuAdvancedSearch.Text = My.Resources.Mnu_AdvancedSearch
+        MnuPageUp.Text = My.Resources.Mnu_Prev
+        MnuPageDown.Text = My.Resources.Mnu_Next
+        '帮助
+        MnuHelp.Text = My.Resources.Mnu_Help
+        MnuHelpTutorial.Text = My.Resources.Mnu_Tutorial
+        MnuHelpWebsite.Text = My.Resources.Mnu_Website
+        MnuHelpGithub.Text = My.Resources.Mnu_GitHub
+        MnuHelpWhatsNew.Text = My.Resources.Mnu_WhatsNew
+        MnuCheckUpdate.Text = My.Resources.Mnu_CheckUpdate
+        MnuHelpLicense.Text = My.Resources.Mnu_License
+        MnuHelpPrivacy.Text = My.Resources.Mnu_Privacy
+        MnuTerms.Text = My.Resources.Mnu_Terms
+        MnuHelpAbout.Text = My.Resources.Mnu_About
+        '窗体
+        UpdateMenuItem()
     End Sub
 
     ''' <summary>
@@ -250,7 +285,7 @@ Public Class MainForm
         (MnuLibClose, "MenuFolderClose"),
         (MnuLibRename, "MenuFolderEdit"),
         (MnuLibDelete, "MenuFolderDel"),
-        (MnuLibProperties, "MenuProperties"),
+        (MnuLibStatistics, "MenuProperties"),
         (MnuMsNew, "MenuFileNew"),
         (MnuMsImport, "MenuFileInput"),
         (MnuMsView, "MenuView"),
@@ -300,7 +335,7 @@ Public Class MainForm
             ApplyMenuIcon(menuHandle, SC_REFRESH, My.Resources.Icons.MenuRefreshDark, True)
             ApplyMenuIcon(menuHandle, SC_PLAY, My.Resources.Icons.MenuImagePlayDark, True)
             ApplyMenuIcon(menuHandle, SC_SETTINGS, My.Resources.Icons.MenuSettingsDark, True)
-            ApplyMenuIcon(menuHandle, SC_PROPERTIES, My.Resources.Icons.MenuPropertiesDark, True)
+            ApplyMenuIcon(menuHandle, SC_STATISTICS, My.Resources.Icons.MenuPropertiesDark, True)
             ApplyMenuIcon(menuHandle, SC_ABOUT, My.Resources.Icons.MenuInfoDark, True)
         Else
             ApplyMenuIcon(menuHandle, SC_ALWAYSONTOP, My.Resources.Icons.MenuPinLight)
@@ -308,7 +343,7 @@ Public Class MainForm
             ApplyMenuIcon(menuHandle, SC_REFRESH, My.Resources.Icons.MenuRefreshLight)
             ApplyMenuIcon(menuHandle, SC_PLAY, My.Resources.Icons.MenuImagePlayLight)
             ApplyMenuIcon(menuHandle, SC_SETTINGS, My.Resources.Icons.MenuSettingsLight)
-            ApplyMenuIcon(menuHandle, SC_PROPERTIES, My.Resources.Icons.MenuPropertiesLight)
+            ApplyMenuIcon(menuHandle, SC_STATISTICS, My.Resources.Icons.MenuPropertiesLight)
             ApplyMenuIcon(menuHandle, SC_ABOUT, My.Resources.Icons.MenuInfoLight)
         End If
     End Sub
@@ -326,7 +361,7 @@ Public Class MainForm
         MnuLibClose.Enabled = False
         MnuLibRename.Enabled = False
         MnuLibDelete.Enabled = False
-        MnuLibProperties.Enabled = False
+        MnuLibStatistics.Enabled = False
         MnuMsNew.Enabled = False
         MnuMsImport.Enabled = False
         MnuMsView.Enabled = False
@@ -363,12 +398,12 @@ Public Class MainForm
         LblNotes.Text = ""
         SearchTextBox.Enabled = False
         SearchTextBox.Text = ""
-        StatusLabel.Text = "就绪"
-        ArtworkStatusLabel.Text = "<无稿件库>"
+        StatusLabel.Text = My.Resources.Stat_Ready
+        ArtworkStatusLabel.Text = My.Resources.Main_LblNoLib
         _artworkCount = 0
-        SelectStatusLabel.Text = "0个稿件"
-        StorageStatusLabel.Text = "存储: 0B (0个文件)"
-        PageStatusLabel.Text = "页码: 0/0"
+        SelectStatusLabel.Text = My.Resources.Main_LblNoMs
+        StorageStatusLabel.Text = My.Resources.Main_LblNoStorage
+        PageStatusLabel.Text = My.Resources.Main_LblNoPage
         PageStatusLabel.Visible = False
         TSSep2.Visible = False
         TSSep1.Visible = False
@@ -377,7 +412,7 @@ Public Class MainForm
         Dim menuHandle = GetSystemMenu(Handle, False) '获取菜单句柄
         EnableMenuItem(menuHandle, SC_NEWMANUSCRIPT, MF_GRAYED)
         EnableMenuItem(menuHandle, SC_PLAY, MF_GRAYED)
-        EnableMenuItem(menuHandle, SC_PROPERTIES, MF_GRAYED)
+        EnableMenuItem(menuHandle, SC_STATISTICS, MF_GRAYED)
         GC.Collect()
     End Sub
 
@@ -387,27 +422,35 @@ Public Class MainForm
     Private Sub SysMenuInit()
         Dim menuHandle = GetSystemMenu(Handle, False) '获取菜单句柄
         '添加新菜单
-        InsertMenu(menuHandle, 0, MF_BYPOSITION Or MF_STRING, SC_ALWAYSONTOP, "窗口置顶(&T)")
+        InsertMenu(menuHandle, 0, MF_BYPOSITION Or MF_STRING, SC_ALWAYSONTOP, My.Resources.Mnu_AlwaysOnTop)
         InsertMenu(menuHandle, 1, MF_BYPOSITION Or MF_SEPARATOR, 0, Nothing)
-        InsertMenu(menuHandle, 8, MF_BYPOSITION Or MF_STRING, SC_NEWMANUSCRIPT, "新建稿件(&N)...")
-        InsertMenu(menuHandle, 9, MF_BYPOSITION Or MF_STRING, SC_REFRESH, "刷新(&R)")
-        InsertMenu(menuHandle, 10, MF_BYPOSITION Or MF_STRING, SC_PLAY, "幻灯片放映(&P)")
+        InsertMenu(menuHandle, 8, MF_BYPOSITION Or MF_STRING, SC_NEWMANUSCRIPT, My.Resources.Mnu_NewMs)
+        InsertMenu(menuHandle, 9, MF_BYPOSITION Or MF_STRING, SC_REFRESH, My.Resources.Mnu_Refresh)
+        InsertMenu(menuHandle, 10, MF_BYPOSITION Or MF_STRING, SC_PLAY, My.Resources.Mnu_Play)
         InsertMenu(menuHandle, 11, MF_BYPOSITION Or MF_SEPARATOR, 0, Nothing)
-        InsertMenu(menuHandle, 12, MF_BYPOSITION Or MF_STRING, SC_SETTINGS, "选项(&O)...")
-        InsertMenu(menuHandle, 13, MF_BYPOSITION Or MF_STRING, SC_PROPERTIES, "统计信息(&I)...")
-        InsertMenu(menuHandle, 14, MF_BYPOSITION Or MF_STRING, SC_ABOUT, "关于(&A)...")
+        InsertMenu(menuHandle, 12, MF_BYPOSITION Or MF_STRING, SC_SETTINGS, My.Resources.Mnu_Options)
+        InsertMenu(menuHandle, 13, MF_BYPOSITION Or MF_STRING, SC_STATISTICS, My.Resources.Mnu_Properties)
+        InsertMenu(menuHandle, 14, MF_BYPOSITION Or MF_STRING, SC_ABOUT, My.Resources.Mnu_About)
         InsertMenu(menuHandle, 15, MF_BYPOSITION Or MF_SEPARATOR, 0, Nothing)
         '设置菜单快捷键
-        SetMenuItemWithShortcut(menuHandle, 0, SC_ALWAYSONTOP, "窗口置顶(&T)", "Alt+T")
-        SetMenuItemWithShortcut(menuHandle, 8, SC_NEWMANUSCRIPT, "新建稿件(&N)...", "Ctrl+N")
-        SetMenuItemWithShortcut(menuHandle, 9, SC_REFRESH, "刷新(&R)", "F5")
-        SetMenuItemWithShortcut(menuHandle, 10, SC_PLAY, "幻灯片放映(&P)", "Ctrl+F5")
-        SetMenuItemWithShortcut(menuHandle, 12, SC_SETTINGS, "选项(&O)...", "Ctrl+K")
-        SetMenuItemWithShortcut(menuHandle, 13, SC_PROPERTIES, "统计信息(&I)...", "Alt+I")
-        SetMenuItemWithShortcut(menuHandle, 14, SC_ABOUT, "关于(&A)...", "Ctrl+F1")
+        UpdateMenuItem()
+        '设置菜单可用状态
         EnableMenuItem(menuHandle, SC_NEWMANUSCRIPT, MF_GRAYED)
         EnableMenuItem(menuHandle, SC_PLAY, MF_GRAYED)
-        EnableMenuItem(menuHandle, SC_PROPERTIES, MF_GRAYED)
+        EnableMenuItem(menuHandle, SC_STATISTICS, MF_GRAYED)
+    End Sub
+    ''' <summary>
+    ''' 更新窗体菜单项
+    ''' </summary>
+    Private Sub UpdateMenuItem()
+        Dim menuHandle = GetSystemMenu(Handle, False) '获取菜单句柄
+        SetMenuItemWithShortcut(menuHandle, 0, SC_ALWAYSONTOP, My.Resources.Mnu_AlwaysOnTop, "Alt+T")
+        SetMenuItemWithShortcut(menuHandle, 8, SC_NEWMANUSCRIPT, My.Resources.Mnu_NewMs, "Ctrl+N")
+        SetMenuItemWithShortcut(menuHandle, 9, SC_REFRESH, My.Resources.Mnu_Refresh, "F5")
+        SetMenuItemWithShortcut(menuHandle, 10, SC_PLAY, My.Resources.Mnu_Play, "Ctrl+F5")
+        SetMenuItemWithShortcut(menuHandle, 12, SC_SETTINGS, My.Resources.Mnu_Options, "Ctrl+K")
+        SetMenuItemWithShortcut(menuHandle, 13, SC_STATISTICS, My.Resources.Mnu_Properties, "Alt+I")
+        SetMenuItemWithShortcut(menuHandle, 14, SC_ABOUT, My.Resources.Mnu_About, "Ctrl+F1")
     End Sub
 
     ''' <summary>
@@ -415,7 +458,7 @@ Public Class MainForm
     ''' </summary>
     Private Sub LoadArtworks()
         Text = $"{_libraryManager.GetCurrentLibrary.LibraryName} - Furry Art Studio"
-        StatusLabel.Text = "正在载入数据..."
+        StatusLabel.Text = My.Resources.Stat_Loading
         ArtworkListSplitContainer.UseWaitCursor = True
         '设置菜单
         MnuLibOpenFolder.Enabled = True
@@ -426,7 +469,7 @@ Public Class MainForm
         MnuLibClose.Enabled = True
         MnuLibRename.Enabled = True
         MnuLibDelete.Enabled = True
-        MnuLibProperties.Enabled = True
+        MnuLibStatistics.Enabled = True
         MnuMsNew.Enabled = True
         MnuMsImport.Enabled = True
         MnuAdvancedSearch.Enabled = True
@@ -440,9 +483,9 @@ Public Class MainForm
         Dim menuHandle = GetSystemMenu(Handle, False) '获取菜单句柄
         EnableMenuItem(menuHandle, SC_NEWMANUSCRIPT, MF_ENABLED)
         EnableMenuItem(menuHandle, SC_PLAY, MF_ENABLED)
-        EnableMenuItem(menuHandle, SC_PROPERTIES, MF_ENABLED)
+        EnableMenuItem(menuHandle, SC_STATISTICS, MF_ENABLED)
         '设置UI
-        LblTitle.Text = "请选择一个项目"
+        LblTitle.Text = My.Resources.Main_LblNoSelect
         LblAuthor.Text = ""
         LblTags.Text = ""
         LblCharacters.Text = ""
@@ -451,9 +494,10 @@ Public Class MainForm
         SearchTextBox.Enabled = True
         '设置图片墙
         ImageGalleryMain.ClearImages() '清空所有图片
-        ArtworkStatusLabel.Text = $"稿件库: {_libraryManager.GetCurrentLibrary.LibraryName}" '稿件库名称
+        ArtworkStatusLabel.Text = String.Format(My.Resources.Main_LblLibName,
+                                                _libraryManager.GetCurrentLibrary.LibraryName) '稿件库名称
         Dim artworks = _libraryManager.GetCurrentLibrary.GetAllArtworksComplete '获取当前库全部数据
-        SelectStatusLabel.Text = $"{artworks.Count}个稿件" '稿件数量
+        SelectStatusLabel.Text = String.Format(My.Resources.Main_LblMs, artworks.Count) '稿件数量
         '遍历所有稿件
         Dim libraryPath = _libraryManager.GetCurrentLibrary.LibraryPath
         SetGallery(artworks, libraryPath) '载入稿件
@@ -462,12 +506,13 @@ Public Class MainForm
         _imageList.Reverse() '反转顺序
         '设置状态栏
         Dim result = GetFolderInfo(libraryPath)
-        StorageStatusLabel.Text = $"存储: {result.sizeString} ({result.fileCount:N0}个文件)"
+        StorageStatusLabel.Text = String.Format(My.Resources.Main_LblStorage,
+                                                result.sizeString, result.fileCount)
         Dim page As Integer = Math.Ceiling(_artworkCount / ImageGalleryMain.PageSize)
         MnuPageDown.Enabled = page > 1
-        PageStatusLabel.Text = $"页码: 1/{page}" '在初始化阶段暂时获得不到准确的页码
+        PageStatusLabel.Text = String.Format(My.Resources.Main_LblPage1, page) '在初始化阶段暂时获得不到准确的页码
         ArtworkListSplitContainer.UseWaitCursor = False
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
     Private Sub SetGallery(artworks As List(Of Artwork), libraryPath As String)
         For Each artwork In artworks
@@ -511,7 +556,7 @@ Public Class MainForm
     ''' 查看属性信息
     ''' </summary>
     Private Sub StorageStatusLabel_Click(sender As Object, e As EventArgs) Handles StorageStatusLabel.Click
-        MnuLibProperties.PerformClick()
+        MnuLibStatistics.PerformClick()
     End Sub
     Private Sub SearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles SearchTextBox.TextChanged
         SearchArtwork()
@@ -520,7 +565,7 @@ Public Class MainForm
     ''' 搜索稿件
     ''' </summary>
     Private Sub SearchArtwork()
-        StatusLabel.Text = "正在搜索..."
+        StatusLabel.Text = My.Resources.Stat_Searching
         ClearSelect()
         If SearchTextBox.Text = "" Then
             RefreshLib()
@@ -534,14 +579,14 @@ Public Class MainForm
             SetGallery(resultArtwork, libraryPath) '载入稿件
             TSSep1.Visible = True
             SearchStatusLabel.Visible = True
-            SearchStatusLabel.Text = $"{ImageGalleryMain.TotalImageCount}个稿件"
+            SearchStatusLabel.Text = String.Format(My.Resources.Main_LblSearchedMs, ImageGalleryMain.TotalImageCount) '已搜到的图片数量
             Dim page As Integer = Math.Ceiling(ImageGalleryMain.TotalImageCount / ImageGalleryMain.PageSize)
             MnuPageDown.Enabled = page > 1
-            PageStatusLabel.Text = $"页码: 1/{page}" '在初始化阶段暂时获得不到准确的页码
-            SelectStatusLabel.Text = $"{_artworkCount}个稿件"
+            PageStatusLabel.Text = String.Format(My.Resources.Main_LblPage1, page) '在初始化阶段暂时获得不到准确的页码
+            SelectStatusLabel.Text = String.Format(My.Resources.Main_LblMs, _artworkCount) '稿件总数量
             Text = $"{ImageGalleryMain.TotalImageCount}个稿件 - {_libraryManager.GetCurrentLibrary.LibraryName} - Furry Art Studio"
         End If
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
 #End Region
 
@@ -572,7 +617,7 @@ Public Class MainForm
             Process.Start(startInfo)
             Me.Close()
         Catch ex As Win32Exception
-            MessageBox.Show($"权限提升失败：{ex.Message}", "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(String.Format(My.Resources.Msg_ElevatedFailed, ex.Message), "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
     Private Sub MnuRunTerminal_Click(sender As Object, e As EventArgs) Handles MnuRunTerminal.Click
@@ -591,13 +636,13 @@ Public Class MainForm
             }
             Process.Start(psi)
         Catch ex As Exception
-            MessageBox.Show($"命令提示符启动失败: {ex.Message}", "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(String.Format(My.Resources.Msg_TerminalFailed, ex.Message), "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
     Private Sub MnuProperties_Click(sender As Object, e As EventArgs) Handles MnuProperties.Click
-        StatusLabel.Text = "设置首选项"
+        StatusLabel.Text = My.Resources.Stat_OpenProp
         PropertiesForm.ShowDialog()
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
     Private Sub MnuExit_Click(sender As Object, e As EventArgs) Handles MnuExit.Click
         Me.Close()
@@ -615,7 +660,7 @@ Public Class MainForm
         Dim libraryFolders = Directory.GetDirectories(Path.Combine(Application.StartupPath, "Artworks"))
         If libraryFolders.Length = 0 Then
             Dim artworkMenuItem As New ToolStripMenuItem() With {
-                .Text = "<无稿件库>",
+                .Text = My.Resources.Main_LblNoLib,
                 .Enabled = False
             }
             MnuLibList.DropDownItems.Add(artworkMenuItem)
@@ -651,10 +696,10 @@ Public Class MainForm
     End Sub
     Private Sub MnuLibNew_Click(sender As Object, e As EventArgs) Handles MnuLibNew.Click
         Using inputForm As New InputDialogForm With {
-            .Text = "新建稿件库"
+            .Text = My.Resources.Input_NewLibTitle
         }
-            inputForm.InputTxtbox.Text = "新稿件库"
-            StatusLabel.Text = "正在创建稿件库..."
+            inputForm.InputTxtbox.Text = My.Resources.Input_TxtNewLib
+            StatusLabel.Text = My.Resources.Stat_CreatingLib
             If inputForm.ShowDialog() = DialogResult.OK Then '显示对话框并获取结果
                 Dim newLib As String = inputForm.InputValue
                 _libraryManager.AddLibrary(newLib)
@@ -662,7 +707,7 @@ Public Class MainForm
                 RefreshLib() '刷新
             Else
             End If
-            StatusLabel.Text = "就绪"
+            StatusLabel.Text = My.Resources.Stat_Ready
         End Using
     End Sub
     Private Sub MnuLibImport_Click(sender As Object, e As EventArgs) Handles MnuLibImport.Click
@@ -672,16 +717,16 @@ Public Class MainForm
 
     End Sub
     Private Sub MnuLibExportCSV_Click(sender As Object, e As EventArgs) Handles MnuLibExportCSV.Click
-        StatusLabel.Text = "正在导出为CSV..."
+        StatusLabel.Text = My.Resources.Stat_ExportCSV
         Using saveFileDialog As New SaveFileDialog() With {
-            .Filter = "CSV文件(*.csv)|*.csv|所有文件(*.*)|*.*",
+            .Filter = My.Resources.Main_FileFilterCSV,
             .FileName = $"{_libraryManager.GetCurrentLibrary.LibraryName}.csv"
             }
             If saveFileDialog.ShowDialog() = DialogResult.OK Then
                 _libraryManager.GetCurrentLibrary.ExportTableToCSV(saveFileDialog.FileName)
             End If
         End Using
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
     Private Sub MnuLibRefresh_Click(sender As Object, e As EventArgs) Handles MnuLibRefresh.Click
         RefreshLib()
@@ -697,10 +742,10 @@ Public Class MainForm
     End Sub
     Private Sub MnuLibClone_Click(sender As Object, e As EventArgs) Handles MnuLibClone.Click
         Using inputForm As New InputDialogForm With {
-            .Text = "克隆稿件库"
+            .Text = My.Resources.Input_CloneLibTitle
         }
-            inputForm.InputTxtbox.Text = _libraryManager.GetCurrentLibrary.LibraryName & "的副本"
-            StatusLabel.Text = "正在克隆稿件库..."
+            inputForm.InputTxtbox.Text = String.Format(My.Resources.Input_TxtClone, _libraryManager.GetCurrentLibrary.LibraryName)
+            StatusLabel.Text = My.Resources.Stat_Cloning
             If inputForm.ShowDialog() = DialogResult.OK Then '显示对话框并获取结果
                 Dim newLib As String = inputForm.InputValue
                 Dim newPath As String = Path.Combine(Application.StartupPath, "Artworks", newLib)
@@ -714,7 +759,7 @@ Public Class MainForm
                 RefreshLib() '刷新
             Else
             End If
-            StatusLabel.Text = "就绪"
+            StatusLabel.Text = My.Resources.Stat_Ready
         End Using
     End Sub
     Private Sub MnuLibOpenFolder_Click(sender As Object, e As EventArgs) Handles MnuLibOpenFolder.Click
@@ -727,7 +772,7 @@ Public Class MainForm
         Clipboard.SetDataObject(_libraryManager.GetCurrentLibrary.LibraryPath)
     End Sub
     Private Sub MnuLibClose_Click(sender As Object, e As EventArgs) Handles MnuLibClose.Click
-        StatusLabel.Text = "正在关闭稿件库..."
+        StatusLabel.Text = My.Resources.Stat_Closing
         CloseLibrary()
         _libraryManager.CloseLibrary(_libraryManager.GetCurrentLibrary.LibraryName)
         MenuInit()
@@ -736,10 +781,10 @@ Public Class MainForm
         Dim oldLib As String = _libraryManager.GetCurrentLibrary.LibraryName
         Dim oldPath As String = Path.Combine(Application.StartupPath, "Artworks", oldLib)
         Using inputForm As New InputDialogForm With {
-            .Text = "重命名稿件库"
+            .Text = My.Resources.Input_RenameLibTitle
         }
             inputForm.InputTxtbox.Text = _libraryManager.GetCurrentLibrary.LibraryName
-            StatusLabel.Text = "正在重命名稿件库..."
+            StatusLabel.Text = My.Resources.Stat_Renaming
             If inputForm.ShowDialog() = DialogResult.OK Then '显示对话框并获取结果
                 Try
                     Dim newLib As String = inputForm.InputValue
@@ -749,12 +794,12 @@ Public Class MainForm
                     _libraryManager.AddLibrary(newLib) '载入新稿件库
                     _libraryManager.SwitchLibrary(newLib)
                 Catch ex As Exception
-                    MessageBox.Show($"创建失败: {ex.Message}")
+                    MessageBox.Show(String.Format(My.Resources.Msg_CreateFailed, ex.Message))
                 End Try
                 RefreshLib() '更名后重新载入数据库
             Else
             End If
-            StatusLabel.Text = "就绪"
+            StatusLabel.Text = My.Resources.Stat_Ready
         End Using
     End Sub
     Private Sub MnuLibDelete_Click(sender As Object, e As EventArgs) Handles MnuLibDelete.Click
@@ -763,20 +808,20 @@ Public Class MainForm
         Dim nowLib As String = _libraryManager.GetCurrentLibrary.LibraryName
         _libraryManager.CloseLibrary(nowLib) '先释放数据库资源, 再尝试删除文件
         Try
-            StatusLabel.Text = "正在删除稿件库..."
+            StatusLabel.Text = My.Resources.Stat_DeletingLib
             If isShiftPressed Then
-                Dim result = MessageBox.Show($"你希望永久删除稿件库 {nowLib} 吗? 此操作不可逆",
-                    "删除稿件库",
+                Dim result = MessageBox.Show(String.Format(My.Resources.Msg_DeleteLibPermanently, nowLib),
+                    My.Resources.FurryArtStudio,
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning)
                 If result = DialogResult.Yes Then
                     Directory.Delete(nowPath, True)
                 Else
-                    Throw New OperationCanceledException("操作被用户取消")
+                    Throw New OperationCanceledException(My.Resources.Main_StrOperationCancelled)
                 End If
             Else
-                Dim result = MessageBox.Show($"你希望将稿件库 {nowLib} 移到回收站吗?",
-                    "删除稿件库",
+                Dim result = MessageBox.Show(String.Format(My.Resources.Msg_DeleteLib, nowLib),
+                    My.Resources.FurryArtStudio,
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question)
                 If result = DialogResult.Yes Then
@@ -784,7 +829,7 @@ Public Class MainForm
                     FileIO.UIOption.AllDialogs,
                     FileIO.RecycleOption.SendToRecycleBin)
                 Else
-                    Throw New OperationCanceledException("操作被用户取消")
+                    Throw New OperationCanceledException(My.Resources.Main_StrOperationCancelled)
                 End If
             End If
             MenuInit()
@@ -793,23 +838,23 @@ Public Class MainForm
             _libraryManager.AddLibrary(nowLib)
             _libraryManager.SwitchLibrary(nowLib)
         Catch ex As Exception
-            MessageBox.Show($"稿件库删除失败: {ex.Message}", "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(String.Format(My.Resources.Msg_LibDeleteFailed, ex.Message), My.Resources.FurryArtStudio, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
-    Private Sub MnuLibProperties_Click(sender As Object, e As EventArgs) Handles MnuLibProperties.Click
-        ShowLibProperties()
+    Private Sub MnuLibStatistics_Click(sender As Object, e As EventArgs) Handles MnuLibStatistics.Click
+        ShowLibStatistics()
     End Sub
-    Private Sub ShowLibProperties()
+    Private Sub ShowLibStatistics()
         Dim sb As New StringBuilder
         Dim library = _libraryManager.GetCurrentLibrary
-        sb.Append($"稿件库: {library.LibraryName}{vbCrLf}")
-        sb.Append($"库目录: {library.LibraryPath}{vbCrLf}")
-        sb.Append($"稿件数: {library.GetAllArtworksComplete.Count}{vbCrLf}")
+        sb.Append(String.Format(My.Resources.Main_StrPropLib, library.LibraryName) & vbCrLf)
+        sb.Append(String.Format(My.Resources.Main_StrPropLibPath, library.LibraryPath) & vbCrLf)
+        sb.Append(String.Format(My.Resources.Main_StrPropMsCount, library.GetAllArtworksComplete.Count) & vbCrLf)
         Dim result = GetFolderInfo(library.LibraryPath)
-        sb.Append($"存储: {result.sizeString} 文件: {result.fileCount:N0}{vbCrLf}")
-        sb.Append($"当前时间: {Now:yyyy-MM-dd HH:mm:ss}")
-        MessageBox.Show(sb.ToString, "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        sb.Append(String.Format(My.Resources.Main_StrPropStorage, result.sizeString, result.fileCount) & vbCrLf)
+        sb.Append(My.Resources.Main_StrPropNowTime)
+        MessageBox.Show(sb.ToString, My.Resources.FurryArtStudio, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 #End Region
 
@@ -818,7 +863,7 @@ Public Class MainForm
         NewManuscript()
     End Sub
     Private Sub NewManuscript()
-        StatusLabel.Text = "正在新建稿件..."
+        StatusLabel.Text = My.Resources.Stat_NewMs
         Dim initArtwork As New Artwork With {
             .CreateTime = Now
         }
@@ -829,7 +874,7 @@ Public Class MainForm
                 RefreshLib()
             End If
         End Using
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
     Private Sub MnuMsImport_Click(sender As Object, e As EventArgs) Handles MnuMsImport.Click
 
@@ -838,7 +883,7 @@ Public Class MainForm
         ViewImage(Guid.Parse(ImageGalleryMain.SelectedImages(0).UUID))
     End Sub
     Private Sub MnuMsEdit_Click(sender As Object, e As EventArgs) Handles MnuMsEdit.Click
-        StatusLabel.Text = "正在编辑稿件..."
+        StatusLabel.Text = My.Resources.Stat_EditMs
         Dim nowArtwork As Artwork = _libraryManager.GetCurrentLibrary.GetArtworkByUUID(Guid.Parse(ImageGalleryMain.SelectedImages(0).UUID))
         Using editForm As New EditDialogForm(nowArtwork, _libraryManager.GetCurrentLibrary.LibraryPath)
             If editForm.ShowDialog() = DialogResult.OK Then
@@ -847,23 +892,25 @@ Public Class MainForm
                 RefreshLib()
             End If
         End Using
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
     Private Sub MnuMsDelete_Click(sender As Object, e As EventArgs) Handles MnuMsDelete.Click
         Dim isShiftPressed As Boolean = My.Computer.Keyboard.ShiftKeyDown
-        StatusLabel.Text = "正在删除稿件..."
+        StatusLabel.Text = My.Resources.Stat_DeletingMs
         Dim imgList As List(Of GalleryImage) = ImageGalleryMain.SelectedImages()
         Dim uuidList As List(Of Guid) = imgList.Select(Function(c) Guid.Parse(c.UUID)).ToList()
         Dim titleList As List(Of String) = imgList.Select(Function(c) c.Title).ToList()
         Dim nowPath As String = _libraryManager.GetCurrentLibrary.LibraryPath
         Try
             If isShiftPressed Then
-                Dim result = MessageBox.Show($"确实要永久性的删除{titleList.Count}项稿件吗?" & vbCrLf & String.Join(vbCrLf, titleList.Take(5)) & If(titleList.Count > 5, vbCrLf & $"...等 {titleList.Count} 个项目", ""),
-                    "删除项目",
+                Dim result = MessageBox.Show(String.Format(My.Resources.Msg_DeleteMsPermanently, titleList.Count) & vbCrLf &
+                                             String.Join(vbCrLf, titleList.Take(5)) &
+                                             If(titleList.Count > 5, vbCrLf & String.Format(My.Resources.Msg_DeleteMsCount, titleList.Count), ""),
+                    My.Resources.FurryArtStudio,
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question)
                 If result <> DialogResult.Yes Then
-                    StatusLabel.Text = "就绪"
+                    StatusLabel.Text = My.Resources.Stat_Ready
                     Return
                 End If
                 For Each uuid In uuidList
@@ -871,12 +918,14 @@ Public Class MainForm
                     _libraryManager.GetCurrentLibrary.SoftDeleteArtwork(uuid) '标记为软删除
                 Next
             Else
-                Dim result = MessageBox.Show($"确实要将这{titleList.Count}项放入回收站吗?" & vbCrLf & String.Join(vbCrLf, titleList.Take(5)) & If(titleList.Count > 5, vbCrLf & $"...等 {titleList.Count} 个项目", ""),
-                    "删除项目",
+                Dim result = MessageBox.Show(String.Format(My.Resources.Msg_DeleteMs, titleList.Count) & vbCrLf &
+                                             String.Join(vbCrLf, titleList.Take(5)) &
+                                             If(titleList.Count > 5, vbCrLf & String.Format(My.Resources.Msg_DeleteMsCount, titleList.Count), ""),
+                    My.Resources.FurryArtStudio,
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question)
                 If result <> DialogResult.Yes Then
-                    StatusLabel.Text = "就绪"
+                    StatusLabel.Text = My.Resources.Stat_Ready
                     Return
                 End If
                 For Each uuid In uuidList
@@ -890,13 +939,13 @@ Public Class MainForm
         Catch ex As OperationCanceledException
             '忽略
         End Try
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
     Private Sub MnuMsExport_Click(sender As Object, e As EventArgs) Handles MnuMsExport.Click
         '待开发
     End Sub
     Private Sub MnuMsPrint_Click(sender As Object, e As EventArgs) Handles MnuMsPrint.Click
-        StatusLabel.Text = "正在初始化打印..."
+        StatusLabel.Text = My.Resources.Stat_PreparePrint
         '获取选中的图片列表
         Dim selectedImages As New List(Of String)()
         Dim selectedItem As List(Of GalleryImage) = ImageGalleryMain.SelectedImages
@@ -920,8 +969,9 @@ Public Class MainForm
         End If
         '检查是否有图片
         If selectedImages.Count = 0 Then
-            MessageBox.Show("没有找到可打印的图片文件", "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            StatusLabel.Text = "就绪"
+            MessageBox.Show(My.Resources.Msg_NoPrintFile, My.Resources.FurryArtStudio,
+                            MessageBoxButtons.OK, MessageBoxIcon.Information)
+            StatusLabel.Text = My.Resources.Stat_Ready
             Return
         End If
         Dim isShiftPressed As Boolean = My.Computer.Keyboard.ShiftKeyDown
@@ -955,7 +1005,7 @@ Public Class MainForm
             If pageSetupDialog.ShowDialog() = DialogResult.OK Then
                 '再显示打印对话框
                 If printDialog.ShowDialog() = DialogResult.OK Then
-                    StatusLabel.Text = "正在打印..."
+                    StatusLabel.Text = My.Resources.Stat_Printing
                     '开始打印
                     pd.Print()
                 End If
@@ -966,19 +1016,18 @@ Public Class MainForm
                 If printForm.ShowDialog() = DialogResult.OK AndAlso printForm.PrintDocumentInstance IsNot Nothing Then
                     Try
                         '开始打印
-                        StatusLabel.Text = "正在打印..."
+                        StatusLabel.Text = My.Resources.Stat_Printing
                         printForm.PrintDocumentInstance.Print()
                     Catch ex As Exception
-                        MessageBox.Show($"打印时出错: {ex.Message}",
-                                  "打印错误",
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Error)
+                        MessageBox.Show(String.Format(My.Resources.Msg_PrintFailed, ex.Message),
+                                  My.Resources.FurryArtStudio,
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 ElseIf printForm.UserCancelled Then
                 End If
             End Using
         End If
-        StatusLabel.Text = "就绪"
+        StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
     Private Sub Pd_Printpage(sender As Object, e As PrintPageEventArgs)
         If _currentPrintImages Is Nothing OrElse _currentPrintIndex >= _currentPrintImages.Count Then
@@ -1014,7 +1063,8 @@ Public Class MainForm
             e.HasMorePages = (_currentPrintIndex < _currentPrintImages.Count)
         Catch ex As Exception
             '处理图片加载失败的情况
-            MessageBox.Show($"无法加载图片: {ex.Message}", "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(String.Format(My.Resources.Msg_ImageLoadFailed, ex.Message), My.Resources.FurryArtStudio,
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
             '跳过这张图片，继续下一张
             _currentPrintIndex += 1
             e.HasMorePages = (_currentPrintIndex < _currentPrintImages.Count)
@@ -1043,8 +1093,8 @@ Public Class MainForm
         Dim artworkPaths = GetSelectedArtworkList()
         If artworkPaths.Count > 5 Then '当用户打开超过5个稿件时, 进行确认
             Dim result = MessageBox.Show(
-                            $"您将同时打开{artworkPaths.Count}个文件夹, 确定要继续吗?",
-                            "Furry Art Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                            String.Format(My.Resources.Msg_MultiFolderOpen, artworkPaths.Count),
+                            My.Resources.FurryArtStudio, MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
             If result = DialogResult.No Then Return
         End If
         For Each artworkPath In artworkPaths
@@ -1056,26 +1106,26 @@ Public Class MainForm
         If My.Computer.Keyboard.ShiftKeyDown Then
             Dim artworkObject As New DataObject()
             Dim artworkInfo As New StringBuilder
-            artworkInfo.Append($"## 稿件信息:{vbCrLf}")
+            artworkInfo.Append(My.Resources.Msg_StrMsInfo & vbCrLf)
             artworkInfo.Append($"{SeparatorDash}{vbCrLf}")
             Dim count As Integer = 0
             For Each selectedItem As GalleryImage In ImageGalleryMain.SelectedImages
                 count += 1
                 Dim artwork As Artwork = _libraryManager.GetCurrentLibrary.GetArtworkByUUID(Guid.Parse(selectedItem.UUID))
                 If count > 1 Then artworkInfo.Append($"{SeparatorDash}{vbCrLf}") '当多个稿件时添加分割线
-                artworkInfo.Append($"### 标题: {artwork.Title} - {artwork.Author}{vbCrLf}")
-                artworkInfo.Append($" - UUID: {artwork.UUID}{vbCrLf}")
-                artworkInfo.Append($" - 更新时间: {artwork.UpdateTime:yyyy-MM-dd HH:mm:ss}{vbCrLf}")
-                artworkInfo.Append($" - 入库时间: {artwork.ImportTime:yyyy-MM-dd HH:mm:ss}{vbCrLf}")
-                artworkInfo.Append($" - 创作时间: {artwork.CreateTime:yyyy-MM-dd HH:mm:ss}{vbCrLf}")
-                artworkInfo.Append($" - 标签: {FormatArrayWithEllipsis(artwork.Tags)}{vbCrLf}")
-                artworkInfo.Append($" - 角色: {FormatArrayWithEllipsis(artwork.Characters)}{vbCrLf}")
-                artworkInfo.Append($" - 备注: {artwork.Notes}{vbCrLf}")
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsTitle, artwork.Title, artwork.Author) & vbCrLf)
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsUUID, selectedItem.UUID) & vbCrLf)
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsUpdate, artwork.UpdateTime) & vbCrLf)
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsImport, artwork.ImportTime) & vbCrLf)
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsCreate, artwork.CreateTime) & vbCrLf)
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsTags, FormatArrayWithEllipsis(artwork.Tags)) & vbCrLf)
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsCharacters, FormatArrayWithEllipsis(artwork.Characters)) & vbCrLf)
+                artworkInfo.Append(String.Format(My.Resources.Msg_StrMsNotes, artwork.Notes) & vbCrLf)
             Next
             artworkInfo.Append($"{SeparatorDash}{vbCrLf}")
-            artworkInfo.Append($"总计{count}个稿件{vbCrLf}")
-            artworkInfo.Append($"当前时间: {Now:yyyy-MM-dd HH:mm:ss}{vbCrLf}")
-            artworkInfo.Append($"*由 Furry Art Studio 提供技术支持*")
+            artworkInfo.Append(String.Format(My.Resources.Msg_StrMsTotal, count) & vbCrLf) '总计
+            artworkInfo.Append(String.Format(My.Resources.Main_StrPropNowTime) & vbCrLf) '当前时间
+            artworkInfo.Append(My.Resources.Msg_StrMsSupportByFAS)
             artworkObject.SetData(DataFormats.Text, artworkInfo) '复制信息文本
             CopyDirectoryToClipboard(artworkPaths.ToArray(), artworkObject) '同时复制稿件
         Else
@@ -1144,11 +1194,11 @@ Public Class MainForm
 
     End Sub
     Private Sub MnuHelpLicense_Click(sender As Object, e As EventArgs) Handles MnuHelpLicense.Click
-        Dim txt As New TextBoxForm(My.Resources.Licenses.LicenseText, "Apache License 2.0")
+        Dim txt As New TextBoxForm(My.Resources.Licenses.LicenseText, My.Resources.Main_StrLicense)
         txt.Show()
     End Sub
     Private Sub MnuHelpPrivacy_Click(sender As Object, e As EventArgs) Handles MnuHelpPrivacy.Click
-        Dim txt As New TextBoxForm(My.Resources.Licenses.PrivacyText, "隐私政策")
+        Dim txt As New TextBoxForm(My.Resources.Licenses.PrivacyText, My.Resources.Main_StrPrivacy)
         txt.Show()
     End Sub
     Private Sub MnuHelpTutorial_Click(sender As Object, e As EventArgs) Handles MnuHelpTutorial.Click
@@ -1158,11 +1208,11 @@ Public Class MainForm
 
     End Sub
     Private Sub MnuHelpWhatsNew_Click(sender As Object, e As EventArgs) Handles MnuHelpWhatsNew.Click
-        Dim txt As New TextBoxForm(ReadChangelogFromResource, "新增功能")
+        Dim txt As New TextBoxForm(ReadChangelogFromResource, My.Resources.Main_StrWhatsNew)
         txt.Show()
     End Sub
     Private Sub MnuTerms_Click(sender As Object, e As EventArgs) Handles MnuTerms.Click
-        Dim txt As New TextBoxForm(My.Resources.Licenses.TermsText, "用户协议")
+        Dim txt As New TextBoxForm(My.Resources.Licenses.TermsText, My.Resources.Main_StrTerms)
         txt.Show()
     End Sub
 #End Region
@@ -1185,8 +1235,8 @@ Public Class MainForm
         ConMnuMsOpenFolder.Enabled = False
         ConMnuMsCopy.Enabled = False
         ConMnuMsCopyPath.Enabled = False
-        SelectStatusLabel.Text = $"{_artworkCount}个稿件"
-        LblTitle.Text = "请选择一个项目"
+        SelectStatusLabel.Text = String.Format(My.Resources.Main_LblMs, _artworkCount)
+        LblTitle.Text = My.Resources.Main_LblNoSelect
         LblAuthor.Text = ""
         LblTags.Text = ""
         LblCharacters.Text = ""
@@ -1217,13 +1267,13 @@ Public Class MainForm
             ConMnuMsOpenFolder.Enabled = True
             ConMnuMsCopy.Enabled = True
             ConMnuMsCopyPath.Enabled = True
-            SelectStatusLabel.Text = $"已选: 1/{_artworkCount}"
+            SelectStatusLabel.Text = String.Format(My.Resources.Main_LblSelectMs1, _artworkCount)
             PiChkThumb.Image = selectedImage.Thumbnail
             LblTitle.Text = $"{selectedArtwork.Title}"
             LblAuthor.Text = $"{selectedArtwork.Author}"
-            LblCharacters.Text = $"角色: {FormatArrayWithEllipsis(selectedArtwork.Characters)}"
-            LblTags.Text = $"标签: {FormatArrayWithEllipsis(selectedArtwork.Tags)}"
-            LblNotes.Text = $"备注: {selectedArtwork.Notes}"
+            LblCharacters.Text = String.Format(My.Resources.Main_LblCharacter, FormatArrayWithEllipsis(selectedArtwork.Characters))
+            LblTags.Text = String.Format(My.Resources.Main_LblTags, FormatArrayWithEllipsis(selectedArtwork.Tags))
+            LblNotes.Text = String.Format(My.Resources.Main_LblNotes, selectedArtwork.Notes)
         ElseIf selectedCount > 1 Then '选择多个时
             MnuMsView.Enabled = False
             MnuMsEdit.Enabled = False
@@ -1241,8 +1291,8 @@ Public Class MainForm
             ConMnuMsOpenFolder.Enabled = True
             ConMnuMsCopy.Enabled = True
             ConMnuMsCopyPath.Enabled = True
-            SelectStatusLabel.Text = $"已选: {selectedCount}/{_artworkCount}"
-            LblTitle.Text = $"已选择{selectedCount}个项目"
+            SelectStatusLabel.Text = String.Format(My.Resources.Main_LblSelectMs, selectedCount, _artworkCount)
+            LblTitle.Text = String.Format(My.Resources.Main_LblTitleSelect, selectedCount)
             LblAuthor.Text = ""
             LblCharacters.Text = ""
             LblTags.Text = ""
@@ -1251,7 +1301,7 @@ Public Class MainForm
         End If
     End Sub
     Private Sub ImageGalleryMain_PageChanged(page As Integer) Handles ImageGalleryMain.PageChanged
-        PageStatusLabel.Text = $"页码: {page}/{ImageGalleryMain.GetTotalPages}"
+        PageStatusLabel.Text = String.Format(My.Resources.Main_LblPage, page, ImageGalleryMain.GetTotalPages)
         UpdatePageMenu()
     End Sub
     Private Sub ImageGalleryMain_ImageDoubleClicked(image As GalleryImage) Handles ImageGalleryMain.ImageDoubleClicked
@@ -1270,7 +1320,8 @@ Public Class MainForm
             If currentArtwork.FilePaths Is Nothing OrElse'检查当前稿件是否有图片
             currentArtwork.FilePaths.Length = 0 OrElse
             Not currentArtwork.FilePaths.Any(Function(p) IsImageFile(p)) Then
-                MessageBox.Show("当前稿件没有图片文件", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(My.Resources.Msg_NoImg, My.Resources.FurryArtStudio,
+                                MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Return
             End If
             Dim viewForm As New ViewForm(currentArtwork, allArtworks)
@@ -1280,7 +1331,8 @@ Public Class MainForm
                                             End Sub '订阅窗口关闭事件
             viewForm.Show() '创建并显示图片窗口
         Catch ex As Exception
-            MessageBox.Show($"打开图片窗口时出错: {ex.Message}", "Furry Art Studio", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(String.Format(My.Resources.Msg_ImageLoadFailed, ex.Message), My.Resources.FurryArtStudio,
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Public Sub CloseLibrary()

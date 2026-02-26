@@ -472,7 +472,22 @@ Module BasicFcn
         mii.cch = Len(mii.dwTypeData)
         SetMenuItemInfo(menuHandle, position, True, mii)
     End Sub
-
+    ''' <summary>
+    ''' 修改菜单文本
+    ''' </summary>
+    ''' <param name="hMenu">菜单句柄</param>
+    ''' <param name="nPos">菜单位置</param>
+    ''' <param name="newText">新的菜单项文本</param>
+    Public Sub UpdateMenuItemText(ByVal hMenu As IntPtr, ByVal nPos As Integer, ByVal newText As String)
+        Dim mii As New MENUITEMINFO With {
+            .cbSize = Marshal.SizeOf(GetType(MENUITEMINFO)),
+            .fMask = MIIM_STRING Or MIIM_ID Or MIIM_FTYPE,
+            .fType = MFT_STRING,
+            .dwTypeData = newText,
+            .cch = newText.Length
+        }
+        SetMenuItemInfo(hMenu, nPos, True, mii)
+    End Sub
 #End Region
 
 #Region "环境判断"

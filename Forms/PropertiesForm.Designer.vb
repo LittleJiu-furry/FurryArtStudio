@@ -70,6 +70,7 @@ Partial Class PropertiesForm
         Me.LblThumbMin = New System.Windows.Forms.Label()
         Me.ColorDlg = New System.Windows.Forms.ColorDialog()
         Me.BtnClose = New System.Windows.Forms.Button()
+        Me.ChkMenuUpper = New System.Windows.Forms.CheckBox()
         Me.GrpAppearance.SuspendLayout()
         Me.GrpStartup.SuspendLayout()
         Me.GrpAdvanced.SuspendLayout()
@@ -77,7 +78,7 @@ Partial Class PropertiesForm
         '
         'BtnExport
         '
-        Me.BtnExport.Location = New System.Drawing.Point(136, 386)
+        Me.BtnExport.Location = New System.Drawing.Point(136, 404)
         Me.BtnExport.Name = "BtnExport"
         Me.BtnExport.Size = New System.Drawing.Size(119, 41)
         Me.BtnExport.TabIndex = 53
@@ -86,7 +87,7 @@ Partial Class PropertiesForm
         '
         'BtnImport
         '
-        Me.BtnImport.Location = New System.Drawing.Point(12, 386)
+        Me.BtnImport.Location = New System.Drawing.Point(12, 404)
         Me.BtnImport.Name = "BtnImport"
         Me.BtnImport.Size = New System.Drawing.Size(119, 41)
         Me.BtnImport.TabIndex = 52
@@ -95,7 +96,7 @@ Partial Class PropertiesForm
         '
         'BtnReset
         '
-        Me.BtnReset.Location = New System.Drawing.Point(565, 386)
+        Me.BtnReset.Location = New System.Drawing.Point(562, 404)
         Me.BtnReset.Name = "BtnReset"
         Me.BtnReset.Size = New System.Drawing.Size(119, 41)
         Me.BtnReset.TabIndex = 51
@@ -104,6 +105,7 @@ Partial Class PropertiesForm
         '
         'GrpAppearance
         '
+        Me.GrpAppearance.Controls.Add(Me.ChkMenuUpper)
         Me.GrpAppearance.Controls.Add(Me.ChkShowThemeColor)
         Me.GrpAppearance.Controls.Add(Me.LblFontShow)
         Me.GrpAppearance.Controls.Add(Me.BtnFont)
@@ -129,7 +131,7 @@ Partial Class PropertiesForm
         Me.GrpAppearance.Controls.Add(Me.LblTheme)
         Me.GrpAppearance.Location = New System.Drawing.Point(12, 12)
         Me.GrpAppearance.Name = "GrpAppearance"
-        Me.GrpAppearance.Size = New System.Drawing.Size(380, 368)
+        Me.GrpAppearance.Size = New System.Drawing.Size(380, 386)
         Me.GrpAppearance.TabIndex = 55
         Me.GrpAppearance.TabStop = False
         Me.GrpAppearance.Text = "外观"
@@ -423,7 +425,7 @@ Partial Class PropertiesForm
         Me.GrpAdvanced.Controls.Add(Me.LblThumbMin)
         Me.GrpAdvanced.Location = New System.Drawing.Point(398, 151)
         Me.GrpAdvanced.Name = "GrpAdvanced"
-        Me.GrpAdvanced.Size = New System.Drawing.Size(408, 229)
+        Me.GrpAdvanced.Size = New System.Drawing.Size(408, 247)
         Me.GrpAdvanced.TabIndex = 57
         Me.GrpAdvanced.TabStop = False
         Me.GrpAdvanced.Text = "高级"
@@ -542,19 +544,29 @@ Partial Class PropertiesForm
         'BtnClose
         '
         Me.BtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BtnClose.Location = New System.Drawing.Point(687, 386)
+        Me.BtnClose.Location = New System.Drawing.Point(687, 404)
         Me.BtnClose.Name = "BtnClose"
         Me.BtnClose.Size = New System.Drawing.Size(119, 41)
         Me.BtnClose.TabIndex = 58
         Me.BtnClose.Text = "关闭(&C)"
         Me.BtnClose.UseVisualStyleBackColor = True
         '
+        'ChkMenuUpper
+        '
+        Me.ChkMenuUpper.AutoSize = True
+        Me.ChkMenuUpper.Location = New System.Drawing.Point(19, 354)
+        Me.ChkMenuUpper.Name = "ChkMenuUpper"
+        Me.ChkMenuUpper.Size = New System.Drawing.Size(119, 19)
+        Me.ChkMenuUpper.TabIndex = 80
+        Me.ChkMenuUpper.Text = "菜单栏全大写"
+        Me.ChkMenuUpper.UseVisualStyleBackColor = True
+        '
         'PropertiesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.BtnClose
-        Me.ClientSize = New System.Drawing.Size(812, 433)
+        Me.ClientSize = New System.Drawing.Size(812, 453)
         Me.Controls.Add(Me.BtnClose)
         Me.Controls.Add(Me.GrpAdvanced)
         Me.Controls.Add(Me.GrpStartup)
@@ -625,4 +637,5 @@ Partial Class PropertiesForm
     Friend WithEvents ChkShowThemeColor As CheckBox
     Friend WithEvents ColorDlg As ColorDialog
     Friend WithEvents BtnClose As Button
+    Friend WithEvents ChkMenuUpper As CheckBox
 End Class

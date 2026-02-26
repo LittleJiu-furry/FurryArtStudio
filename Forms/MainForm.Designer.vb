@@ -52,7 +52,7 @@ Partial Class MainForm
         Me.MnuLibRename = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLibDelete = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MnuLibProperties = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuLibStatistics = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuManuscript = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMsNew = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMsImport = New System.Windows.Forms.ToolStripMenuItem()
@@ -206,11 +206,11 @@ Partial Class MainForm
         Me.MnuExit.Name = "MnuExit"
         Me.MnuExit.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
         Me.MnuExit.Size = New System.Drawing.Size(235, 26)
-        Me.MnuExit.Text = "退出(&C)"
+        Me.MnuExit.Text = "退出(&X)"
         '
         'MnuLibrary
         '
-        Me.MnuLibrary.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuLibList, Me.MnuLibRefresh, Me.ToolStripSeparator11, Me.MnuLibNew, Me.MnuLibImport, Me.MnuLibExport, Me.MnuLibExportCSV, Me.ToolStripSeparator5, Me.MnuLibClone, Me.MnuLibOpenFolder, Me.MnuLibCopy, Me.MnuLibCopyPath, Me.ToolStripSeparator6, Me.MnuLibClose, Me.MnuLibRename, Me.MnuLibDelete, Me.ToolStripSeparator7, Me.MnuLibProperties})
+        Me.MnuLibrary.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuLibList, Me.MnuLibRefresh, Me.ToolStripSeparator11, Me.MnuLibNew, Me.MnuLibImport, Me.MnuLibExport, Me.MnuLibExportCSV, Me.ToolStripSeparator5, Me.MnuLibClone, Me.MnuLibOpenFolder, Me.MnuLibCopy, Me.MnuLibCopyPath, Me.ToolStripSeparator6, Me.MnuLibClose, Me.MnuLibRename, Me.MnuLibDelete, Me.ToolStripSeparator7, Me.MnuLibStatistics})
         Me.MnuLibrary.Name = "MnuLibrary"
         Me.MnuLibrary.Size = New System.Drawing.Size(86, 24)
         Me.MnuLibrary.Text = "稿件库(&L)"
@@ -312,7 +312,7 @@ Partial Class MainForm
         Me.MnuLibClose.Name = "MnuLibClose"
         Me.MnuLibClose.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
         Me.MnuLibClose.Size = New System.Drawing.Size(258, 26)
-        Me.MnuLibClose.Text = "关闭(&X)"
+        Me.MnuLibClose.Text = "关闭(&C)"
         '
         'MnuLibRename
         '
@@ -335,13 +335,13 @@ Partial Class MainForm
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
         Me.ToolStripSeparator7.Size = New System.Drawing.Size(255, 6)
         '
-        'MnuLibProperties
+        'MnuLibStatistics
         '
-        Me.MnuLibProperties.Image = CType(resources.GetObject("MnuLibProperties.Image"), System.Drawing.Image)
-        Me.MnuLibProperties.Name = "MnuLibProperties"
-        Me.MnuLibProperties.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
-        Me.MnuLibProperties.Size = New System.Drawing.Size(258, 26)
-        Me.MnuLibProperties.Text = "统计信息(&P)..."
+        Me.MnuLibStatistics.Image = CType(resources.GetObject("MnuLibStatistics.Image"), System.Drawing.Image)
+        Me.MnuLibStatistics.Name = "MnuLibStatistics"
+        Me.MnuLibStatistics.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
+        Me.MnuLibStatistics.Size = New System.Drawing.Size(258, 26)
+        Me.MnuLibStatistics.Text = "统计信息(&S)..."
         '
         'MnuManuscript
         '
@@ -528,7 +528,7 @@ Partial Class MainForm
         Me.MnuHelpTutorial.Name = "MnuHelpTutorial"
         Me.MnuHelpTutorial.ShortcutKeys = System.Windows.Forms.Keys.F1
         Me.MnuHelpTutorial.Size = New System.Drawing.Size(224, 26)
-        Me.MnuHelpTutorial.Text = "快速入门(&U)"
+        Me.MnuHelpTutorial.Text = "教程(&T)"
         '
         'ToolStripSeparator8
         '
@@ -582,7 +582,7 @@ Partial Class MainForm
         '
         Me.MnuTerms.Name = "MnuTerms"
         Me.MnuTerms.Size = New System.Drawing.Size(224, 26)
-        Me.MnuTerms.Text = "用户协议(&T)"
+        Me.MnuTerms.Text = "用户协议(&T)..."
         '
         'MnuHelpAbout
         '
@@ -914,7 +914,7 @@ Partial Class MainForm
     Friend WithEvents MnuMsCopy As ToolStripMenuItem
     Friend WithEvents MnuMsCopyPath As ToolStripMenuItem
     Friend WithEvents MnuMsImport As ToolStripMenuItem
-    Friend WithEvents MnuLibProperties As ToolStripMenuItem
+    Friend WithEvents MnuLibStatistics As ToolStripMenuItem
     Friend WithEvents MnuLibClose As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents StaStrip As StatusStrip

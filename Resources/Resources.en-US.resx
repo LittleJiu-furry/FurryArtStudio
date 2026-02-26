@@ -127,10 +127,10 @@
     <value>Privacy Policy</value>
   </data>
   <data name="About_LinkUserAgreement" xml:space="preserve">
-    <value>User Agreement</value>
+    <value>User Terms</value>
   </data>
   <data name="About_LinkWebSite" xml:space="preserve">
-    <value>Official Website</value>
+    <value>Website</value>
   </data>
   <data name="About_Title" xml:space="preserve">
     <value>About</value>
@@ -190,7 +190,7 @@
     <value>&lt;No Manuscript Library&gt;</value>
   </data>
   <data name="Main_LblNoMs" xml:space="preserve">
-    <value>0 manuscripts</value>
+    <value>0 manuscript</value>
   </data>
   <data name="Main_LblNoStorage" xml:space="preserve">
     <value>Storage: 0B (0 files)</value>
@@ -208,13 +208,13 @@
     <value>&amp;Refresh</value>
   </data>
   <data name="Mnu_Play" xml:space="preserve">
-    <value>Slideshow(&amp;P)</value>
+    <value>&amp;Play</value>
   </data>
   <data name="Mnu_Options" xml:space="preserve">
     <value>&amp;Options...</value>
   </data>
   <data name="Mnu_Properties" xml:space="preserve">
-    <value>Statistics(&amp;I)...</value>
+    <value>&amp;Statistics...</value>
   </data>
   <data name="Stat_Loading" xml:space="preserve">
     <value>Loading data...</value>
@@ -223,7 +223,7 @@
     <value>Please select an item</value>
   </data>
   <data name="Main_LblMs" xml:space="preserve">
-    <value>{0} manuscripts</value>
+    <value>{0} manuscript(s)</value>
   </data>
   <data name="Main_LblStorage" xml:space="preserve">
     <value>Storage: {0} ({1} files)</value>
@@ -235,10 +235,10 @@
     <value>Searching...</value>
   </data>
   <data name="Msg_ElevatedFailed" xml:space="preserve">
-    <value>Elevation failed: {ex.Message}</value>
+    <value>Elevation failed: {0}</value>
   </data>
   <data name="Msg_TerminalFailed" xml:space="preserve">
-    <value>Failed to start terminal: {ex.Message}</value>
+    <value>Failed to start terminal: {0}</value>
   </data>
   <data name="Input_NewLibTitle" xml:space="preserve">
     <value>New Manuscript Library</value>
@@ -274,7 +274,7 @@
     <value>Renaming manuscript library...</value>
   </data>
   <data name="Msg_CreateFailed" xml:space="preserve">
-    <value>Creation failed: {ex.Message}</value>
+    <value>Creation failed: {0}</value>
   </data>
   <data name="Stat_DeletingLib" xml:space="preserve">
     <value>Deleting manuscript library...</value>
@@ -307,7 +307,7 @@
     <value>Do you want to move the manuscript library {0} to the Recycle Bin?</value>
   </data>
   <data name="Msg_LibDeleteFailed" xml:space="preserve">
-    <value>Failed to delete library: {ex.Message}</value>
+    <value>Failed to delete library: {0}</value>
   </data>
   <data name="Main_StrPropLib" xml:space="preserve">
     <value>Library: {0}</value>
@@ -340,10 +340,10 @@
     <value>Printing...</value>
   </data>
   <data name="Msg_PrintFailed" xml:space="preserve">
-    <value>Error while printing: {ex.Message}</value>
+    <value>Error while printing: {0}</value>
   </data>
   <data name="Msg_ImageLoadFailed" xml:space="preserve">
-    <value>Failed to load image: {ex.Message}</value>
+    <value>Failed to load image: {0}</value>
   </data>
   <data name="Msg_MultiFolderOpen" xml:space="preserve">
     <value>You are about to open {0} folders at once. Do you want to continue?</value>
@@ -370,13 +370,13 @@
     <value> - UUID: {0}</value>
   </data>
   <data name="Msg_StrMsUpdate" xml:space="preserve">
-    <value> - Update time: {0}</value>
+    <value> - Update time: {0:yyyy-MM-dd HH:mm:ss}</value>
   </data>
   <data name="Msg_StrMsImport" xml:space="preserve">
-    <value> - Import time: {0}</value>
+    <value> - Import time: {0:yyyy-MM-dd HH:mm:ss}</value>
   </data>
   <data name="Msg_StrMsCreate" xml:space="preserve">
-    <value> - Creation time: {0}</value>
+    <value> - Creation time: {0:yyyy-MM-dd HH:mm:ss}</value>
   </data>
   <data name="Msg_StrMsTags" xml:space="preserve">
     <value> - Tags: {0}</value>
@@ -406,7 +406,7 @@
     <value>What's New</value>
   </data>
   <data name="Main_StrTerms" xml:space="preserve">
-    <value>User Agreement</value>
+    <value>User Terms</value>
   </data>
   <data name="Main_LblSelectMs1" xml:space="preserve">
     <value>Selected: 1/{0}</value>
@@ -431,9 +431,6 @@
   </data>
   <data name="Msg_NoImg" xml:space="preserve">
     <value>The current manuscript has no image files</value>
-  </data>
-  <data name="Msg_OpenImgFailed" xml:space="preserve">
-    <value>Error opening image window: {ex.Message}</value>
   </data>
   <data name="Print_Title" xml:space="preserve">
     <value>Print</value>
@@ -481,7 +478,7 @@
     <value>Open &amp;Terminal Here</value>
   </data>
   <data name="Mnu_Exit" xml:space="preserve">
-    <value>Exit(&amp;C)</value>
+    <value>E&amp;xit</value>
   </data>
   <data name="Mnu_CurrentLib" xml:space="preserve">
     <value>C&amp;urrent Library</value>
@@ -511,7 +508,7 @@
     <value>Copy Folder Pa&amp;th</value>
   </data>
   <data name="Mnu_Close" xml:space="preserve">
-    <value>Close(&amp;X)</value>
+    <value>&amp;Close</value>
   </data>
   <data name="Mnu_Rename" xml:space="preserve">
     <value>Rena&amp;me...</value>
@@ -520,7 +517,7 @@
     <value>&amp;Delete...</value>
   </data>
   <data name="Mnu_FormProperties" xml:space="preserve">
-    <value>Statistics(&amp;P)...</value>
+    <value>&amp;Statistics...</value>
   </data>
   <data name="Mnu_View" xml:space="preserve">
     <value>Pre&amp;view</value>
@@ -541,7 +538,7 @@
     <value>Inve&amp;rt Selection</value>
   </data>
   <data name="Mnu_Search" xml:space="preserve">
-    <value>Search(&amp;F)</value>
+    <value>&amp;Find</value>
   </data>
   <data name="Mnu_AdvancedSearch" xml:space="preserve">
     <value>&amp;Advanced Search...</value>
@@ -553,7 +550,7 @@
     <value>&amp;Next Page</value>
   </data>
   <data name="Mnu_Tutorial" xml:space="preserve">
-    <value>Quick Start(&amp;T)</value>
+    <value>&amp;Tutorial</value>
   </data>
   <data name="Mnu_Website" xml:space="preserve">
     <value>&amp;Website</value>
@@ -562,7 +559,7 @@
     <value>&amp;GitHub</value>
   </data>
   <data name="Mnu_WhatsNew" xml:space="preserve">
-    <value>What's New(&amp;H)</value>
+    <value>&amp;What's New</value>
   </data>
   <data name="Mnu_CheckUpdate" xml:space="preserve">
     <value>Check for &amp;Updates</value>
@@ -574,7 +571,7 @@
     <value>&amp;Privacy Policy...</value>
   </data>
   <data name="Mnu_Terms" xml:space="preserve">
-    <value>User Agreement(&amp;T)</value>
+    <value>User &amp;Terms...</value>
   </data>
   <data name="Mnu_File" xml:space="preserve">
     <value>&amp;File</value>
@@ -593,5 +590,8 @@
   </data>
   <data name="About_BtnOK" xml:space="preserve">
     <value>&amp;Ok</value>
+  </data>
+  <data name="Main_LblSearchedMs" xml:space="preserve">
+    <value>Searched {0} manuscript(s)</value>
   </data>
 </root>

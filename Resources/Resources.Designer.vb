@@ -97,7 +97,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 User Agreement 的本地化字符串。
+        '''  查找类似 User Terms 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property About_LinkUserAgreement() As String
             Get
@@ -106,7 +106,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Official Website 的本地化字符串。
+        '''  查找类似 Website 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property About_LinkWebSite() As String
             Get
@@ -349,7 +349,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 {0} manuscripts 的本地化字符串。
+        '''  查找类似 {0} manuscript(s) 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Main_LblMs() As String
             Get
@@ -367,7 +367,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 0 manuscripts 的本地化字符串。
+        '''  查找类似 0 manuscript 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Main_LblNoMs() As String
             Get
@@ -430,6 +430,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查找类似 Searched {0} manuscript(s) 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property Main_LblSearchedMs() As String
+            Get
+                Return ResourceManager.GetString("Main_LblSearchedMs", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查找类似 Selected: {0}/{1} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Main_LblSelectMs() As String
@@ -448,7 +457,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Storage: {0} ({1} files) 的本地化字符串。
+        '''  查找类似 Storage: {0} ({1:N0} files) 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Main_LblStorage() As String
             Get
@@ -538,7 +547,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Storage: {0} Files: {1} 的本地化字符串。
+        '''  查找类似 Storage: {0} Files: {1:N0} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Main_StrPropStorage() As String
             Get
@@ -547,7 +556,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 User Agreement 的本地化字符串。
+        '''  查找类似 User Terms 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Main_StrTerms() As String
             Get
@@ -610,7 +619,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Close(&amp;X) 的本地化字符串。
+        '''  查找类似 &amp;Close 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_Close() As String
             Get
@@ -673,7 +682,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Exit(&amp;C) 的本地化字符串。
+        '''  查找类似 E&amp;xit 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_Exit() As String
             Get
@@ -718,7 +727,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Statistics(&amp;P)... 的本地化字符串。
+        '''  查找类似 &amp;Statistics... 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_FormProperties() As String
             Get
@@ -835,7 +844,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Slideshow(&amp;P) 的本地化字符串。
+        '''  查找类似 &amp;Play 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_Play() As String
             Get
@@ -871,7 +880,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Statistics(&amp;I)... 的本地化字符串。
+        '''  查找类似 &amp;Statistics... 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_Properties() As String
             Get
@@ -907,7 +916,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Search(&amp;F) 的本地化字符串。
+        '''  查找类似 &amp;Find 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_Search() As String
             Get
@@ -934,7 +943,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 User Agreement(&amp;T) 的本地化字符串。
+        '''  查找类似 User &amp;Terms... 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_Terms() As String
             Get
@@ -943,7 +952,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Quick Start(&amp;T) 的本地化字符串。
+        '''  查找类似 &amp;Tutorial 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_Tutorial() As String
             Get
@@ -979,7 +988,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 What&apos;s New(&amp;H) 的本地化字符串。
+        '''  查找类似 &amp;What&apos;s New 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Mnu_WhatsNew() As String
             Get
@@ -988,7 +997,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Creation failed: {ex.Message} 的本地化字符串。
+        '''  查找类似 Creation failed: {0} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_CreateFailed() As String
             Get
@@ -1042,7 +1051,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Elevation failed: {ex.Message} 的本地化字符串。
+        '''  查找类似 Elevation failed: {0} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_ElevatedFailed() As String
             Get
@@ -1051,7 +1060,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Failed to load image: {ex.Message} 的本地化字符串。
+        '''  查找类似 Failed to load image: {0} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_ImageLoadFailed() As String
             Get
@@ -1060,7 +1069,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Failed to delete library: {ex.Message} 的本地化字符串。
+        '''  查找类似 Failed to delete library: {0} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_LibDeleteFailed() As String
             Get
@@ -1096,16 +1105,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Error opening image window: {ex.Message} 的本地化字符串。
-        '''</summary>
-        Friend ReadOnly Property Msg_OpenImgFailed() As String
-            Get
-                Return ResourceManager.GetString("Msg_OpenImgFailed", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似 Error while printing: {ex.Message} 的本地化字符串。
+        '''  查找类似 Error while printing: {0} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_PrintFailed() As String
             Get
@@ -1123,7 +1123,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似  - Creation time: {0} 的本地化字符串。
+        '''  查找类似  - Creation time: {0:yyyy-MM-dd HH:mm:ss} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_StrMsCreate() As String
             Get
@@ -1132,7 +1132,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似  - Import time: {0} 的本地化字符串。
+        '''  查找类似  - Import time: {0:yyyy-MM-dd HH:mm:ss} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_StrMsImport() As String
             Get
@@ -1204,7 +1204,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似  - Update time: {0} 的本地化字符串。
+        '''  查找类似  - Update time: {0:yyyy-MM-dd HH:mm:ss} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_StrMsUpdate() As String
             Get
@@ -1222,7 +1222,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Failed to start terminal: {ex.Message} 的本地化字符串。
+        '''  查找类似 Failed to start terminal: {0} 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Msg_TerminalFailed() As String
             Get

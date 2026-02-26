@@ -330,6 +330,7 @@
     <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="README_EN.md" />
+    <None Include="release.ps1" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

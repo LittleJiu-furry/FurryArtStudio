@@ -1,9 +1,9 @@
 ﻿Imports System.IO
 
-Public Class ImageChecker
-    ' 考虑更通用的做法
+Module ImageChecker
+    '考虑更通用的做法
     Private Declare Auto Function memcmp Lib "msvcrt.dll" (b1 As Byte(), b2 As Byte(), count As IntPtr) As Integer
-    Private Shared ReadOnly Signatures As New Dictionary(Of String, Byte()) From {
+    Private ReadOnly Signatures As New Dictionary(Of String, Byte()) From {
         {"image/jpeg", New Byte() {&HFF, &HD8, &HFF}},
         {"image/png", New Byte() {&H89, &H50, &H4E, &H47}},
         {"image/gif", New Byte() {&H47, &H49, &H46, &H38}},
@@ -14,17 +14,13 @@ Public Class ImageChecker
         {"image/wmf", New Byte() {&HD7, &HCD, &HC6, &H9A}},
         {"image/emf", New Byte() {&H1, &H0, &H0, &H0}}
     }
-
-    Private Sub New()
-    End Sub
-
-    Public Shared Function IsImageByMIMEType(filePath As String) As Boolean
-        ' 校验给定的路径
+    Public Function IsImageByMIMEType(filePath As String) As Boolean
+        '校验给定的路径
         If String.IsNullOrEmpty(filePath) Then Return False
         If Not File.Exists(filePath) Then Return False
         Try
-            Using fs As New IO.FileStream(filePath, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read)
-                If fs.Length < 2 Then Return False ' 最小魔数为2
+            Using fs As New FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read)
+                If fs.Length < 2 Then Return False '最小魔数为2
                 Dim buffer(7) As Byte
                 fs.Read(buffer, 0, buffer.Length)
                 For Each kvp In Signatures
@@ -36,9 +32,8 @@ Public Class ImageChecker
                 Next
             End Using
         Catch ex As Exception
-            ' 不应当返回False，应当当抛出异常，调用者可以根据需要处理
+            '不应当返回False, 应当当抛出异常, 调用者可以根据需要处理
             Throw New IOException($"Can not read file at {filePath}", ex)
         End Try
     End Function
-
-End Class
+End Module

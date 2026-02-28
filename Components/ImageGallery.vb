@@ -35,6 +35,9 @@ Public Class ImageGallery
 
     Private _pageRects As New Dictionary(Of Integer, Rectangle)
 
+    Private _selectionAccentColor As Color = Color.Blue
+    Private _badgeColor As Color = Color.Red
+
     Private Const ItemPadding As Integer = 8
     '事件
     ''' <summary>
@@ -171,6 +174,32 @@ Public Class ImageGallery
         Get
             Return _currentPage
         End Get
+    End Property
+    ''' <summary>
+    ''' 获取或设置选中项的颜色
+    ''' </summary>
+    <Browsable(True)>
+    <Description("获取或设置选中项的颜色")>
+    Public Property SelectionAccentColor As Color
+        Get
+            Return _selectionAccentColor
+        End Get
+        Set(value As Color)
+            _selectionAccentColor = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' 获取或设置角标的颜色
+    ''' </summary>
+    <Browsable(True)>
+    <Description("获取或设置角标的颜色")>
+    Public Property BadgeColor As Color
+        Get
+            Return _badgeColor
+        End Get
+        Set(value As Color)
+            _badgeColor = value
+        End Set
     End Property
 #End Region
 
@@ -409,12 +438,12 @@ Public Class ImageGallery
                 Dim badgeRect As New Rectangle(badgeX, badgeY, badgeSize, badgeSize)
                 Dim badgeFontSize As Integer = badgeSize * 0.6
                 '绘制方形背景
-                Using badgeBrush As New SolidBrush(Color.Red)
+                Using badgeBrush As New SolidBrush(_badgeColor)
                     g.FillRectangle(badgeBrush, badgeRect)
                 End Using
                 '绘制数字
                 Using badgeFont As New Font("Arial", badgeFontSize, FontStyle.Bold)
-                    Using textBrush As New SolidBrush(Color.White)
+                    Using textBrush As New SolidBrush(GetForeColor(_badgeColor)) '根据颜色选择前景色
                         Dim countText As String = item.Image.Count.ToString()
                         Dim textSize As SizeF = g.MeasureString(countText, badgeFont)
                         '计算文字居中位置
@@ -427,7 +456,7 @@ Public Class ImageGallery
             End If
             '绘制选中边框
             If _selectedImages.Contains(item.Image) Then
-                Using p As New Pen(Color.FromArgb(58, 162, 143), 5) '之前是Blue
+                Using p As New Pen(_selectionAccentColor, 5)
                     g.DrawRectangle(p, item.Bounds)
                 End Using
             End If

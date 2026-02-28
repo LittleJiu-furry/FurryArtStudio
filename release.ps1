@@ -2,7 +2,7 @@
 
 $versionLine = $assemblyInfo | Where-Object { $_ -match "AssemblyVersion" }
 
-if ($versionLine -match '"([\d\.]+)"') {
+if ($versionLine -match '"(\d+\.\d+\.\d+)\.\d+"') {
     $version = $matches[1]
 }
 

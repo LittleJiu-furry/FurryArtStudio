@@ -20,6 +20,8 @@ Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
 Imports Krypton.Toolkit
+Imports SysThreading = System.Threading
+Imports System.Globalization
 
 Public Class MainForm
     Implements IThemeChangeable, ILocalizable
@@ -45,7 +47,9 @@ Public Class MainForm
     '用于主题消息变更消抖
     Private WithEvents _themeDebounceTimer As New Timer With {
     .Interval = 300
-}
+    }
+    '设置
+    Private Settings As AppSettings = AppSettings.Load()
 #End Region
 
 #Region "窗体事件处理"
@@ -69,6 +73,17 @@ Public Class MainForm
 #Else
         MnuDevTools.Enabled = False
 #End If
+        Select Case Settings.Appearance.Language
+            Case AppSettings.LanguageOption.English
+                SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
+            Case AppSettings.LanguageOption.ChineseSimplified
+                SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("zh-Hans")
+            Case AppSettings.LanguageOption.ChineseTraditional
+                SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("zh-Hant")
+            Case Else
+                SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
+        End Select
+        UpdateFormLang() '更新语言
         StatusLabel.Text = My.Resources.Stat_Ready '就绪
         SystemThemeChange() '设置主题
 
@@ -118,7 +133,7 @@ Public Class MainForm
             End Select
         End If
         If m.Msg = WM_DWMCOLORIZATIONCOLORCHANGED Then '主题发生改变时
-            If AppTheme = Appearance.System Then
+            If Settings.Appearance.Theme = AppSettings.ThemeMode.FollowSystem Then
                 _themeDebounceTimer.Stop()
                 _themeDebounceTimer.Start() '消抖
             End If
@@ -128,7 +143,7 @@ Public Class MainForm
     Private Sub _themeDebounceTimer_Tick() Handles _themeDebounceTimer.Tick
         _themeDebounceTimer.Stop()
         BeginInvoke(New MethodInvoker(Sub()
-                                          If AppTheme = Appearance.System Then
+                                          If Settings.Appearance.Theme = AppSettings.ThemeMode.FollowSystem Then
                                               UpdateFormTheme() '当主题设置为跟随系统时,主题变更通过接口发送给全部窗体
                                           End If
                                       End Sub))
@@ -224,6 +239,13 @@ Public Class MainForm
         MnuHelpAbout.Text = My.Resources.Mnu_About
         '窗体
         UpdateMenuItem()
+        If Settings.Appearance.MenuUppercase Then
+            MnuFile.Text = MnuFile.Text.ToUpper
+            MnuLibrary.Text = MnuLibrary.Text.ToUpper
+            MnuManuscript.Text = MnuManuscript.Text.ToUpper
+            MnuViews.Text = MnuViews.Text.ToUpper
+            MnuHelp.Text = MnuHelp.Text.ToUpper
+        End If
     End Sub
 
     ''' <summary>

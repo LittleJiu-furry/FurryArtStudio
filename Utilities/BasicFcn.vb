@@ -37,12 +37,7 @@ Module BasicFcn
     Public ReadOnly IconColorLight As Color = Color.FromArgb(58, 162, 143)
     Public ReadOnly IconColorDark As Color = Color.FromArgb(87, 226, 180)
     Public ReadOnly IconRed As Color = Color.FromArgb(232, 65, 65)
-    Public AppTheme As Appearance = Appearance.System
-    Public Enum Appearance
-        System
-        Light
-        Dark
-    End Enum
+
 #End Region
 
 #Region "日志记录器"
@@ -373,16 +368,16 @@ Module BasicFcn
         '0x00BBGGRR
         Return CInt(b) << 16 Or CInt(g) << 8 Or CInt(r)
     End Function
+    Public Function RGBToCOLORREF(color As Color) As Integer
+        Return RGBToCOLORREF(color.R, color.G, color.B)
+    End Function
     Public Sub SetTitleBarColor(ByVal hwnd As IntPtr, ByVal r As Byte, ByVal g As Byte, ByVal b As Byte)
         Try
             Dim colorRef As Integer = RGBToCOLORREF(r, g, b)
             '设置标题栏背景色
             DwmSetWindowAttribute(hwnd, DwmWindowAttribute.CaptionColor, colorRef, Marshal.SizeOf(Of Integer)())
             '根据背景亮度决定文字颜色
-            Dim brightness As Double = (0.299 * r + 0.587 * g + 0.114 * b)
-            Dim textColor As Integer = If(brightness > 128,
-                                          RGBToCOLORREF(0, 0, 0),      '深色背景用白色文字
-                                          RGBToCOLORREF(255, 255, 255)) '浅色背景用黑色文字
+            Dim textColor As Integer = RGBToCOLORREF(GetForeColor(Color.FromArgb(r, g, b)))
             DwmSetWindowAttribute(hwnd, DwmWindowAttribute.TextColor, textColor, Marshal.SizeOf(Of Integer)())
             DwmSetWindowAttribute(hwnd, DwmWindowAttribute.BorderColor, textColor, Marshal.SizeOf(Of Integer)())
         Catch ex As Exception
@@ -513,12 +508,12 @@ Module BasicFcn
     ''' 判断当前系统主题是否为深色主题
     ''' </summary>
     Public Function IsDarkMode() As Boolean
-        Select Case AppTheme
-            Case Appearance.Light
+        Select Case AppSettings.Load().Appearance.Theme
+            Case AppSettings.ThemeMode.Light
                 Return False
-            Case Appearance.Dark
+            Case AppSettings.ThemeMode.Dark
                 Return True
-            Case Appearance.System
+            Case AppSettings.ThemeMode.FollowSystem
                 Using regKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", True)
                     Return regKey.GetValue("AppsUseLightTheme", "1") = 0
                 End Using
@@ -535,8 +530,12 @@ Module BasicFcn
         Return $"v{version.Major}.{version.Minor}.{version.Build}"
     End Function
     ''' <summary>
-    ''' 从嵌入资源读取更新日志
+    ''' 获得当前颜色的前景色
     ''' </summary>
+    Public Function GetForeColor(backcolor As Color)
+        Dim brightness As Double = (0.299 * backcolor.R + 0.587 * backcolor.G + 0.114 * backcolor.B)
+        Return If(brightness > 128, Color.Black, Color.White)
+    End Function
 #End Region
 
 #Region "本地化"

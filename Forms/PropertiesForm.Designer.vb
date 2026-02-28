@@ -26,6 +26,7 @@ Partial Class PropertiesForm
         Me.BtnImport = New System.Windows.Forms.Button()
         Me.BtnReset = New System.Windows.Forms.Button()
         Me.GrpAppearance = New System.Windows.Forms.GroupBox()
+        Me.ChkMenuUpper = New System.Windows.Forms.CheckBox()
         Me.ChkShowThemeColor = New System.Windows.Forms.CheckBox()
         Me.LblFontShow = New System.Windows.Forms.Label()
         Me.BtnFont = New System.Windows.Forms.Button()
@@ -70,7 +71,7 @@ Partial Class PropertiesForm
         Me.LblThumbMin = New System.Windows.Forms.Label()
         Me.ColorDlg = New System.Windows.Forms.ColorDialog()
         Me.BtnClose = New System.Windows.Forms.Button()
-        Me.ChkMenuUpper = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GrpAppearance.SuspendLayout()
         Me.GrpStartup.SuspendLayout()
         Me.GrpAdvanced.SuspendLayout()
@@ -136,6 +137,16 @@ Partial Class PropertiesForm
         Me.GrpAppearance.TabStop = False
         Me.GrpAppearance.Text = "外观"
         '
+        'ChkMenuUpper
+        '
+        Me.ChkMenuUpper.AutoSize = True
+        Me.ChkMenuUpper.Location = New System.Drawing.Point(19, 354)
+        Me.ChkMenuUpper.Name = "ChkMenuUpper"
+        Me.ChkMenuUpper.Size = New System.Drawing.Size(119, 19)
+        Me.ChkMenuUpper.TabIndex = 80
+        Me.ChkMenuUpper.Text = "菜单栏全大写"
+        Me.ChkMenuUpper.UseVisualStyleBackColor = True
+        '
         'ChkShowThemeColor
         '
         Me.ChkShowThemeColor.AutoSize = True
@@ -149,11 +160,11 @@ Partial Class PropertiesForm
         'LblFontShow
         '
         Me.LblFontShow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblFontShow.Location = New System.Drawing.Point(124, 246)
+        Me.LblFontShow.Location = New System.Drawing.Point(105, 246)
         Me.LblFontShow.Name = "LblFontShow"
-        Me.LblFontShow.Size = New System.Drawing.Size(136, 33)
+        Me.LblFontShow.Size = New System.Drawing.Size(155, 33)
         Me.LblFontShow.TabIndex = 78
-        Me.LblFontShow.Text = "宋体, 9pt"
+        Me.LblFontShow.Text = "宋体,9pt"
         Me.LblFontShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BtnFont
@@ -308,12 +319,10 @@ Partial Class PropertiesForm
         'RadSystem
         '
         Me.RadSystem.AutoSize = True
-        Me.RadSystem.Checked = True
         Me.RadSystem.Location = New System.Drawing.Point(280, 30)
         Me.RadSystem.Name = "RadSystem"
         Me.RadSystem.Size = New System.Drawing.Size(88, 19)
         Me.RadSystem.TabIndex = 26
-        Me.RadSystem.TabStop = True
         Me.RadSystem.Text = "跟随系统"
         Me.RadSystem.UseVisualStyleBackColor = True
         '
@@ -551,15 +560,14 @@ Partial Class PropertiesForm
         Me.BtnClose.Text = "关闭(&C)"
         Me.BtnClose.UseVisualStyleBackColor = True
         '
-        'ChkMenuUpper
+        'Label1
         '
-        Me.ChkMenuUpper.AutoSize = True
-        Me.ChkMenuUpper.Location = New System.Drawing.Point(19, 354)
-        Me.ChkMenuUpper.Name = "ChkMenuUpper"
-        Me.ChkMenuUpper.Size = New System.Drawing.Size(119, 19)
-        Me.ChkMenuUpper.TabIndex = 80
-        Me.ChkMenuUpper.Text = "菜单栏全大写"
-        Me.ChkMenuUpper.UseVisualStyleBackColor = True
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(305, 417)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(196, 15)
+        Me.Label1.TabIndex = 59
+        Me.Label1.Text = "/!\部分选项需要重启后生效"
         '
         'PropertiesForm
         '
@@ -567,6 +575,7 @@ Partial Class PropertiesForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.BtnClose
         Me.ClientSize = New System.Drawing.Size(812, 453)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BtnClose)
         Me.Controls.Add(Me.GrpAdvanced)
         Me.Controls.Add(Me.GrpStartup)
@@ -587,6 +596,7 @@ Partial Class PropertiesForm
         Me.GrpAdvanced.ResumeLayout(False)
         Me.GrpAdvanced.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents BtnExport As Button
@@ -638,4 +648,5 @@ Partial Class PropertiesForm
     Friend WithEvents ColorDlg As ColorDialog
     Friend WithEvents BtnClose As Button
     Friend WithEvents ChkMenuUpper As CheckBox
+    Friend WithEvents Label1 As Label
 End Class

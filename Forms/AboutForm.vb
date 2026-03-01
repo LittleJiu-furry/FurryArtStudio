@@ -49,18 +49,21 @@ Public Class AboutForm
             LlblUserAgreement.LinkColor = IconColorDark
             LlblUserAgreement.VisitedLinkColor = IconColorLight
             Icon = CreateRoundedRectangleIcon(True, My.Resources.Icons.MenuInfoDark)
+            TxtBox.BackColor = Color.FromArgb(50, 50, 50) '增加一个好看的底色
         Else
             bgColor = BgColorLight
             frColor = FrColorLight
             Icon = CreateRoundedRectangleIcon(False, My.Resources.Icons.MenuInfoLight)
+            TxtBox.BackColor = Color.FromArgb(180, 180, 180)
         End If
+        TxtBox.ForeColor = frColor
         For Each control In controlList
+            If control.Name = "TxtBox" Then Continue For
             control.ForeColor = frColor
             control.BackColor = bgColor
         Next
-        ForeColor = BgColorDark
-        BackColor = BgColorDark
-        TxtBox.BackColor = Color.FromArgb(50, 50, 50) '增加一个好看的底色
+        ForeColor = frColor
+        BackColor = bgColor
         'WinAPI
         DwmSetWindowAttribute(Handle, DwmWindowAttribute.UseImmersiveDarkMode, IsDarkMode(), Marshal.SizeOf(Of Integer))
         SetPreferredAppMode(If(IsDarkMode(), PreferredAppMode.AllowDark, PreferredAppMode.ForceLight))

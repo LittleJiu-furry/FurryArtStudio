@@ -20,14 +20,12 @@
   <img src="https://img.shields.io/badge/Language-VB.NET-red">
 </div>
 
----
 
 ## 🚀 Project Introduction
 
 **FurryArtStudio** is a desktop application developed in VB.NET, dedicated to helping Furry community users efficiently organize character designs, art materials, reference collections, and more 🖼️  
 It supports intuitive categorization, tagging, searching, and batch operations, making it a great helper for art creators and collectors 🎨
 
----
 
 ## 📦 Key Features
 
@@ -40,9 +38,8 @@ It supports intuitive categorization, tagging, searching, and batch operations, 
 - ℹ Badge design and transaction-based file management  
 - 🖼 High-performance image wall, fast loading, low memory usage  
 - 🦾 Privacy-first, no data uploads, no AI training  
-- And more  
+- And more...  
 
----
 
 ## 📥 Quick Start
 
@@ -62,14 +59,12 @@ cd FurryArtStudio
 - Ensure .NET Framework 4.7.2 development tools are installed.  
 - Press F5 to build and run. 🎉  
 
----
 
 ## 🧪 Beta Version Notice
 
 The current version is a beta release, feedback is welcome  
 If you find any issues or have feature suggestions, please submit them via Issues 💡
 
----
 
 ## 📂 Contributing Guide
 
@@ -78,17 +73,18 @@ If you find any issues or have feature suggestions, please submit them via Issue
 3. Submit a Pull Request  
 4. Wait for Review
 
----
 
 ## 📄 License
 
 This project is licensed under **Apache License 2.0**  
 By using this project, please ensure you have fully read and agreed to `PRIVACY.txt` and `TERMS.txt`
 
----
 
 ## 💬 Contact
 
 Developer: xlonglongztz 🐾  
 Welcome to exchange and discuss technology 🤝  
 QQ Group: 620079146 🐧
+
+## 🌟 Stargazers
+[![Stargazers over time](https://starchart.cc/xionglongztz/FurryArtStudio.svg?background=%23101010&axis=%23ffffff&line=%233aa28f)](https://starchart.cc/xionglongztz/FurryArtStudio)

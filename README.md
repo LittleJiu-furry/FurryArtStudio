@@ -77,7 +77,7 @@ cd FurryArtStudio
 ## 📄 许可证
 
 本项目遵循 **Apache License 2.0**  
-使用本项目请确保您已充分阅读并同意[隐私政策](PRIVACY.txt)和[用户协议](TERMS.txt)
+使用本项目请确保您已充分阅读并同意[隐私政策](src/Docs/PRIVACY.txt)和[用户协议](src/Docs/TERMS.txt)
 
 
 ## 💬 联系方式

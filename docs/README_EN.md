@@ -14,10 +14,10 @@
 </p>
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Platform-Windows-blue">
-  <img src="https://img.shields.io/badge/Target-.NET%20Framework%204.7.2-green">
-  <img src="https://img.shields.io/badge/License-Apache--2.0-orange">
-  <img src="https://img.shields.io/badge/Language-VB.NET-red">
+  <img src="https://img.shields.io/badge/Platform-Windows-0078D6">
+  <img src="https://img.shields.io/badge/Target-.NET%20Framework%204.7.2-512BD4">
+  <img src="https://img.shields.io/badge/License-Apache--2.0-4CAF50">
+  <img src="https://img.shields.io/badge/Language-VB.NET-9B4F96">
 </div>
 
 
@@ -77,7 +77,7 @@ If you find any issues or have feature suggestions, please submit them via Issue
 ## 📄 License
 
 This project is licensed under **Apache License 2.0**  
-By using this project, please ensure you have fully read and agreed to `PRIVACY.txt` and `TERMS.txt`
+By using this project, please ensure you have fully read and agreed to [PRIVACY.txt](../src/Docs/PRIVACY.txt) and [TERMS.txt](../src/Docs/TERMS.txt)
 
 
 ## 💬 Contact

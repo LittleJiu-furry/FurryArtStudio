@@ -77,7 +77,7 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\FAS.ico</ApplicationIcon>
+    <ApplicationIcon>src\Resources\FAS.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -150,69 +150,69 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtworkManager\Artwork.vb" />
-    <Compile Include="ArtworkManager\ArtworkLibrary.vb" />
-    <Compile Include="ArtworkManager\LibraryManager.vb" />
-    <Compile Include="Components\GalleryImage.vb" />
-    <Compile Include="Forms\AboutForm.Designer.vb">
+    <Compile Include="src\ArtworkManager\Artwork.vb" />
+    <Compile Include="src\ArtworkManager\ArtworkLibrary.vb" />
+    <Compile Include="src\ArtworkManager\LibraryManager.vb" />
+    <Compile Include="src\Components\GalleryImage.vb" />
+    <Compile Include="src\Forms\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AboutForm.vb">
+    <Compile Include="src\Forms\AboutForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DevToolsForm.Designer.vb">
+    <Compile Include="src\Forms\DevToolsForm.Designer.vb">
       <DependentUpon>DevToolsForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DevToolsForm.vb">
+    <Compile Include="src\Forms\DevToolsForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditDialogForm.Designer.vb">
+    <Compile Include="src\Forms\EditDialogForm.Designer.vb">
       <DependentUpon>EditDialogForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditDialogForm.vb">
+    <Compile Include="src\Forms\EditDialogForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InputDialogForm.Designer.vb">
+    <Compile Include="src\Forms\InputDialogForm.Designer.vb">
       <DependentUpon>InputDialogForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InputDialogForm.vb">
+    <Compile Include="src\Forms\InputDialogForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.vb">
+    <Compile Include="src\Forms\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.vb">
+    <Compile Include="src\Forms\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PrintForm.Designer.vb">
+    <Compile Include="src\Forms\PrintForm.Designer.vb">
       <DependentUpon>PrintForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PrintForm.vb">
+    <Compile Include="src\Forms\PrintForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Components\ImageGallery.vb">
+    <Compile Include="src\Components\ImageGallery.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\PropertiesForm.Designer.vb">
+    <Compile Include="src\Forms\PropertiesForm.Designer.vb">
       <DependentUpon>PropertiesForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PropertiesForm.vb">
+    <Compile Include="src\Forms\PropertiesForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TextBoxForm.Designer.vb">
+    <Compile Include="src\Forms\TextBoxForm.Designer.vb">
       <DependentUpon>TextBoxForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TextBoxForm.vb">
+    <Compile Include="src\Forms\TextBoxForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewForm.Designer.vb">
+    <Compile Include="src\Forms\ViewForm.Designer.vb">
       <DependentUpon>ViewForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViewForm.vb">
+    <Compile Include="src\Forms\ViewForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Resources\Icons.Designer.vb">
+    <Compile Include="src\Resources\Icons.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
@@ -228,94 +228,95 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Resources\Resources.Designer.vb">
-      <DependentUpon>Resources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Resources\Resources.en-US.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.en-US.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Resources.zh-Hans.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.zh-Hans.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Resources.zh-Hant.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.zh-Hant.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Licenses.Designer.vb">
+    <Compile Include="src\Resources\Licenses.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Licenses.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\AppSettings.vb" />
-    <Compile Include="Utilities\BasicFcn.vb" />
-    <Compile Include="Utilities\ImageChecker.vb" />
-    <Compile Include="Utilities\FileTransaction.vb" />
-    <Compile Include="Utilities\Logger.vb" />
-    <Compile Include="Utilities\WinAPI.vb" />
+    <Compile Include="src\Resources\Resources.Designer.vb">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="src\Resources\Resources.en-US.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Resources\Resources.zh-Hans.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.zh-Hans.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Resources\Resources.zh-Hant.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.zh-Hant.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Utilities\AppSettings.vb" />
+    <Compile Include="src\Utilities\BasicFcn.vb" />
+    <Compile Include="src\Utilities\ImageChecker.vb" />
+    <Compile Include="src\Utilities\FileTransaction.vb" />
+    <Compile Include="src\Utilities\Logger.vb" />
+    <Compile Include="src\Utilities\WinAPI.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\AboutForm.resx">
+    <EmbeddedResource Include="src\Forms\AboutForm.resx">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DevToolsForm.resx">
+    <EmbeddedResource Include="src\Forms\DevToolsForm.resx">
       <DependentUpon>DevToolsForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditDialogForm.resx">
+    <EmbeddedResource Include="src\Forms\EditDialogForm.resx">
       <DependentUpon>EditDialogForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InputDialogForm.resx">
+    <EmbeddedResource Include="src\Forms\InputDialogForm.resx">
       <DependentUpon>InputDialogForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="src\Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PrintForm.resx">
+    <EmbeddedResource Include="src\Forms\PrintForm.resx">
       <DependentUpon>PrintForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PropertiesForm.resx">
+    <EmbeddedResource Include="src\Forms\PropertiesForm.resx">
       <DependentUpon>PropertiesForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TextBoxForm.resx">
+    <EmbeddedResource Include="src\Forms\TextBoxForm.resx">
       <DependentUpon>TextBoxForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewForm.resx">
+    <EmbeddedResource Include="src\Forms\ViewForm.resx">
       <DependentUpon>ViewForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icons.resx">
+    <EmbeddedResource Include="src\Resources\Icons.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resources.resx">
+    <EmbeddedResource Include="src\Resources\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resources.en-US.resx">
+    <EmbeddedResource Include="src\Resources\Resources.en-US.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.en-US.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resources.zh-Hans.resx">
+    <EmbeddedResource Include="src\Resources\Resources.zh-Hans.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.zh-Hans.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resources.zh-Hant.resx">
+    <EmbeddedResource Include="src\Resources\Resources.zh-Hant.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.zh-Hant.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Licenses.resx">
+    <EmbeddedResource Include="src\Resources\Licenses.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Licenses.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
@@ -333,8 +334,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="README.md" />
-    <None Include="README_EN.md" />
-    <None Include="release.ps1" />
+    <None Include="docs\README_EN.md" />
+    <None Include="scripts\release.ps1" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -349,100 +350,100 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Tutorial\" />
+    <Folder Include="docs\Tutorial\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ABOUT.txt" />
-    <Content Include="CHANGELOG.txt" />
-    <Content Include="PRIVACY.txt" />
-    <Content Include="Resources\Banner.png" />
-    <Content Include="Resources\Darkmode-Icons\arrow-big-left.png" />
-    <Content Include="Resources\Darkmode-Icons\arrow-big-right-dash.png" />
-    <Content Include="Resources\Darkmode-Icons\arrow-big-right.png" />
-    <Content Include="Resources\Darkmode-Icons\arrow-left.png" />
-    <Content Include="Resources\Darkmode-Icons\arrow-right.png" />
-    <Content Include="Resources\Darkmode-Icons\chart-pie.png" />
-    <Content Include="Resources\Darkmode-Icons\circle-question-mark.png" />
-    <Content Include="Resources\Darkmode-Icons\code.png" />
-    <Content Include="Resources\Darkmode-Icons\copy-plus.png" />
-    <Content Include="Resources\Darkmode-Icons\copy.png" />
-    <Content Include="Resources\Darkmode-Icons\eye.png" />
-    <Content Include="Resources\Darkmode-Icons\file-input.png" />
-    <Content Include="Resources\Darkmode-Icons\file-output.png" />
-    <Content Include="Resources\Darkmode-Icons\file-plus.png" />
-    <Content Include="Resources\Darkmode-Icons\file-spreadsheet.png" />
-    <Content Include="Resources\Darkmode-Icons\file.png" />
-    <Content Include="Resources\Darkmode-Icons\folder-input.png" />
-    <Content Include="Resources\Darkmode-Icons\folder-minus.png" />
-    <Content Include="Resources\Darkmode-Icons\folder-open.png" />
-    <Content Include="Resources\Darkmode-Icons\folder-output.png" />
-    <Content Include="Resources\Darkmode-Icons\folder-pen.png" />
-    <Content Include="Resources\Darkmode-Icons\folder-plus.png" />
-    <Content Include="Resources\Darkmode-Icons\folder-x.png" />
-    <Content Include="Resources\Darkmode-Icons\folders.png" />
-    <Content Include="Resources\Darkmode-Icons\fullscreen.png" />
-    <Content Include="Resources\Darkmode-Icons\github.png" />
-    <Content Include="Resources\Darkmode-Icons\image-play.png" />
-    <Content Include="Resources\Darkmode-Icons\image.png" />
-    <Content Include="Resources\Darkmode-Icons\info.png" />
-    <Content Include="Resources\Darkmode-Icons\pencil-line.png" />
-    <Content Include="Resources\Darkmode-Icons\pencil.png" />
-    <Content Include="Resources\Darkmode-Icons\pin.png" />
-    <Content Include="Resources\Darkmode-Icons\printer.png" />
-    <Content Include="Resources\Darkmode-Icons\search.png" />
-    <Content Include="Resources\Darkmode-Icons\settings.png" />
-    <Content Include="Resources\Darkmode-Icons\shield.png" />
-    <Content Include="Resources\Darkmode-Icons\star.png" />
-    <Content Include="Resources\Darkmode-Icons\terminal.png" />
-    <Content Include="Resources\Darkmode-Icons\trash-2.png" />
-    <Content Include="Resources\Darkmode-Icons\wallpaper.png" />
-    <Content Include="Resources\Darkmode-Icons\x.png" />
-    <Content Include="Resources\FAS.ico" />
-    <Content Include="Resources\FAS.png" />
-    <Content Include="Resources\Lightmode-Icons\arrow-big-left.png" />
-    <Content Include="Resources\Lightmode-Icons\arrow-big-right-dash.png" />
-    <Content Include="Resources\Lightmode-Icons\arrow-big-right.png" />
-    <Content Include="Resources\Lightmode-Icons\arrow-left.png" />
-    <Content Include="Resources\Lightmode-Icons\arrow-right.png" />
-    <Content Include="Resources\Lightmode-Icons\chart-pie.png" />
-    <Content Include="Resources\Lightmode-Icons\circle-question-mark.png" />
-    <Content Include="Resources\Lightmode-Icons\code.png" />
-    <Content Include="Resources\Lightmode-Icons\copy-plus.png" />
-    <Content Include="Resources\Lightmode-Icons\copy.png" />
-    <Content Include="Resources\Lightmode-Icons\eye.png" />
-    <Content Include="Resources\Lightmode-Icons\file-input.png" />
-    <Content Include="Resources\Lightmode-Icons\file-output.png" />
-    <Content Include="Resources\Lightmode-Icons\file-plus.png" />
-    <Content Include="Resources\Lightmode-Icons\file-spreadsheet.png" />
-    <Content Include="Resources\Lightmode-Icons\file.png" />
-    <Content Include="Resources\Lightmode-Icons\folder-input.png" />
-    <Content Include="Resources\Lightmode-Icons\folder-minus.png" />
-    <Content Include="Resources\Lightmode-Icons\folder-open.png" />
-    <Content Include="Resources\Lightmode-Icons\folder-output.png" />
-    <Content Include="Resources\Lightmode-Icons\folder-pen.png" />
-    <Content Include="Resources\Lightmode-Icons\folder-plus.png" />
-    <Content Include="Resources\Lightmode-Icons\folder-x.png" />
-    <Content Include="Resources\Lightmode-Icons\folders.png" />
-    <Content Include="Resources\Lightmode-Icons\fullscreen.png" />
-    <Content Include="Resources\Lightmode-Icons\github.png" />
-    <Content Include="Resources\Lightmode-Icons\image-play.png" />
-    <Content Include="Resources\Lightmode-Icons\image.png" />
-    <Content Include="Resources\Lightmode-Icons\info.png" />
-    <Content Include="Resources\Lightmode-Icons\pencil-line.png" />
-    <Content Include="Resources\Lightmode-Icons\pencil.png" />
-    <Content Include="Resources\Lightmode-Icons\pin.png" />
-    <Content Include="Resources\Lightmode-Icons\printer.png" />
-    <Content Include="Resources\Lightmode-Icons\refresh-cw.png" />
-    <Content Include="Resources\Lightmode-Icons\search.png" />
-    <Content Include="Resources\Lightmode-Icons\settings.png" />
-    <Content Include="Resources\Lightmode-Icons\shield.png" />
-    <Content Include="Resources\Lightmode-Icons\star.png" />
-    <Content Include="Resources\Lightmode-Icons\terminal.png" />
-    <Content Include="Resources\Lightmode-Icons\trash-2.png" />
-    <Content Include="Resources\Lightmode-Icons\wallpaper.png" />
-    <Content Include="Resources\Lightmode-Icons\x.png" />
-    <Content Include="TERMS.txt" />
-    <Content Include="WHATSNEW.txt" />
+    <Content Include="src\Docs\ABOUT.txt" />
+    <Content Include="docs\CHANGELOG.txt" />
+    <Content Include="src\Docs\PRIVACY.txt" />
+    <Content Include="src\Resources\Banner.png" />
+    <Content Include="src\Resources\Darkmode-Icons\arrow-big-left.png" />
+    <Content Include="src\Resources\Darkmode-Icons\arrow-big-right-dash.png" />
+    <Content Include="src\Resources\Darkmode-Icons\arrow-big-right.png" />
+    <Content Include="src\Resources\Darkmode-Icons\arrow-left.png" />
+    <Content Include="src\Resources\Darkmode-Icons\arrow-right.png" />
+    <Content Include="src\Resources\Darkmode-Icons\chart-pie.png" />
+    <Content Include="src\Resources\Darkmode-Icons\circle-question-mark.png" />
+    <Content Include="src\Resources\Darkmode-Icons\code.png" />
+    <Content Include="src\Resources\Darkmode-Icons\copy-plus.png" />
+    <Content Include="src\Resources\Darkmode-Icons\copy.png" />
+    <Content Include="src\Resources\Darkmode-Icons\eye.png" />
+    <Content Include="src\Resources\Darkmode-Icons\file-input.png" />
+    <Content Include="src\Resources\Darkmode-Icons\file-output.png" />
+    <Content Include="src\Resources\Darkmode-Icons\file-plus.png" />
+    <Content Include="src\Resources\Darkmode-Icons\file-spreadsheet.png" />
+    <Content Include="src\Resources\Darkmode-Icons\file.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folder-input.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folder-minus.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folder-open.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folder-output.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folder-pen.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folder-plus.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folder-x.png" />
+    <Content Include="src\Resources\Darkmode-Icons\folders.png" />
+    <Content Include="src\Resources\Darkmode-Icons\fullscreen.png" />
+    <Content Include="src\Resources\Darkmode-Icons\github.png" />
+    <Content Include="src\Resources\Darkmode-Icons\image-play.png" />
+    <Content Include="src\Resources\Darkmode-Icons\image.png" />
+    <Content Include="src\Resources\Darkmode-Icons\info.png" />
+    <Content Include="src\Resources\Darkmode-Icons\pencil-line.png" />
+    <Content Include="src\Resources\Darkmode-Icons\pencil.png" />
+    <Content Include="src\Resources\Darkmode-Icons\pin.png" />
+    <Content Include="src\Resources\Darkmode-Icons\printer.png" />
+    <Content Include="src\Resources\Darkmode-Icons\search.png" />
+    <Content Include="src\Resources\Darkmode-Icons\settings.png" />
+    <Content Include="src\Resources\Darkmode-Icons\shield.png" />
+    <Content Include="src\Resources\Darkmode-Icons\star.png" />
+    <Content Include="src\Resources\Darkmode-Icons\terminal.png" />
+    <Content Include="src\Resources\Darkmode-Icons\trash-2.png" />
+    <Content Include="src\Resources\Darkmode-Icons\wallpaper.png" />
+    <Content Include="src\Resources\Darkmode-Icons\x.png" />
+    <Content Include="src\Resources\FAS.ico" />
+    <Content Include="src\Resources\FAS.png" />
+    <Content Include="src\Resources\Lightmode-Icons\arrow-big-left.png" />
+    <Content Include="src\Resources\Lightmode-Icons\arrow-big-right-dash.png" />
+    <Content Include="src\Resources\Lightmode-Icons\arrow-big-right.png" />
+    <Content Include="src\Resources\Lightmode-Icons\arrow-left.png" />
+    <Content Include="src\Resources\Lightmode-Icons\arrow-right.png" />
+    <Content Include="src\Resources\Lightmode-Icons\chart-pie.png" />
+    <Content Include="src\Resources\Lightmode-Icons\circle-question-mark.png" />
+    <Content Include="src\Resources\Lightmode-Icons\code.png" />
+    <Content Include="src\Resources\Lightmode-Icons\copy-plus.png" />
+    <Content Include="src\Resources\Lightmode-Icons\copy.png" />
+    <Content Include="src\Resources\Lightmode-Icons\eye.png" />
+    <Content Include="src\Resources\Lightmode-Icons\file-input.png" />
+    <Content Include="src\Resources\Lightmode-Icons\file-output.png" />
+    <Content Include="src\Resources\Lightmode-Icons\file-plus.png" />
+    <Content Include="src\Resources\Lightmode-Icons\file-spreadsheet.png" />
+    <Content Include="src\Resources\Lightmode-Icons\file.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folder-input.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folder-minus.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folder-open.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folder-output.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folder-pen.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folder-plus.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folder-x.png" />
+    <Content Include="src\Resources\Lightmode-Icons\folders.png" />
+    <Content Include="src\Resources\Lightmode-Icons\fullscreen.png" />
+    <Content Include="src\Resources\Lightmode-Icons\github.png" />
+    <Content Include="src\Resources\Lightmode-Icons\image-play.png" />
+    <Content Include="src\Resources\Lightmode-Icons\image.png" />
+    <Content Include="src\Resources\Lightmode-Icons\info.png" />
+    <Content Include="src\Resources\Lightmode-Icons\pencil-line.png" />
+    <Content Include="src\Resources\Lightmode-Icons\pencil.png" />
+    <Content Include="src\Resources\Lightmode-Icons\pin.png" />
+    <Content Include="src\Resources\Lightmode-Icons\printer.png" />
+    <Content Include="src\Resources\Lightmode-Icons\refresh-cw.png" />
+    <Content Include="src\Resources\Lightmode-Icons\search.png" />
+    <Content Include="src\Resources\Lightmode-Icons\settings.png" />
+    <Content Include="src\Resources\Lightmode-Icons\shield.png" />
+    <Content Include="src\Resources\Lightmode-Icons\star.png" />
+    <Content Include="src\Resources\Lightmode-Icons\terminal.png" />
+    <Content Include="src\Resources\Lightmode-Icons\trash-2.png" />
+    <Content Include="src\Resources\Lightmode-Icons\wallpaper.png" />
+    <Content Include="src\Resources\Lightmode-Icons\x.png" />
+    <Content Include="src\Docs\TERMS.txt" />
+    <Content Include="src\Docs\WHATSNEW.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />

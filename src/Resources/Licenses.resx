@@ -119,23 +119,18 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AboutText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ABOUT.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-    <comment>关于文本</comment>
+    <value>..\Docs\ABOUT.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="LicenseText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\LICENSE.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-    <comment>许可证文本</comment>
+    <value>..\..\LICENSE.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="PrivacyText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\PRIVACY.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-    <comment>隐私政策文本</comment>
+    <value>..\Docs\PRIVACY.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="TermsText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\TERMS.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-    <comment>用户协议文本</comment>
+    <value>..\Docs\TERMS.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="WhatsNewText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\WHATSNEW.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-    <comment>新增功能文本</comment>
+    <value>..\Docs\WHATSNEW.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

@@ -421,7 +421,7 @@ Public Class ArtworkLibrary
     Private Function MapToArtwork(row As Object) As Artwork
         Dim targetDir As String = Path.Combine(Me._LibraryPath, row.UUID.ToString())
         Dim files As String() = Array.Empty(Of String)()
-        if Directory.Exists(targetDir) Then
+        If Directory.Exists(targetDir) Then
             files = Directory.GetFiles(targetDir)
         End If
 

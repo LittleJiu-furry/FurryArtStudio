@@ -1,5 +1,9 @@
-﻿$assemblyInfo = Get-Content ".\My Project\AssemblyInfo.vb"
+﻿# 定义
+$assemblyInfo = Get-Content ".\My Project\AssemblyInfo.vb"
+$whatsNewPath = ".\src\Docs\WHATSNEW.txt"
+$changelogPath = ".\docs\CHANGELOG.txt"
 
+# 读取版本号
 $versionLine = $assemblyInfo | Where-Object { $_ -match "AssemblyVersion" }
 
 if ($versionLine -match '"(\d+\.\d+\.\d+)\.\d+"') {
@@ -11,20 +15,20 @@ Write-Host "Detected version: $version"
 $tagName = "v$version"
 
 # 更新 CHANGELOG
-$whatsNew = Get-Content .\WHATSNEW.txt -Raw
+$whatsNew = Get-Content $whatsNewPath -Raw 
 $changelog = ""
 
-if (Test-Path .\CHANGELOG.txt) {
-    $changelog = Get-Content .\CHANGELOG.txt -Raw
+if (Test-Path $changelogPath) {
+    $changelog = Get-Content $changelogPath -Raw
 }
 
 $newContent = $whatsNew.TrimEnd() + "`r`n`r`n" + $changelog.TrimStart()
-Set-Content .\CHANGELOG.txt $newContent -Encoding UTF8
+Set-Content $changelogPath $newContent -Encoding UTF8
 
 Write-Host "CHANGELOG updated."
 
 # 提交
-git add CHANGELOG.txt
+git add $changelogPath
 git commit -m "Version $tagName"
 
 # 创建 tag

@@ -1,7 +1,12 @@
 ﻿# 定义
-$assemblyInfo = Get-Content ".\My Project\AssemblyInfo.vb"
-$whatsNewPath = ".\src\Docs\WHATSNEW.txt"
-$changelogPath = ".\docs\CHANGELOG.txt"
+$scriptDir = $PSScriptRoot # 脚本路径
+$projectRoot = Join-Path $scriptDir ".." -Resolve # 项目根目录
+
+$assemblyInfoPath = Join-Path $projectRoot "My Project" "AssemblyInfo.vb"
+$whatsNewPath = Join-Path $projectRoot "src" "Docs" "WHATSNEW.txt"
+$changelogPath = Join-Path $projectRoot "docs" "CHANGELOG.txt"
+
+$assemblyInfo = Get-Content $assemblyInfoPath
 
 # 读取版本号
 $versionLine = $assemblyInfo | Where-Object { $_ -match "AssemblyVersion" }

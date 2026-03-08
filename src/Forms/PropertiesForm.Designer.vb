@@ -57,6 +57,7 @@ Partial Class PropertiesForm
         Me.ChkAutoPlay = New System.Windows.Forms.CheckBox()
         Me.ChkAutoStart = New System.Windows.Forms.CheckBox()
         Me.GrpAdvanced = New System.Windows.Forms.GroupBox()
+        Me.ChkLoop = New System.Windows.Forms.CheckBox()
         Me.ChkDevTools = New System.Windows.Forms.CheckBox()
         Me.ChkPlayNext = New System.Windows.Forms.CheckBox()
         Me.TxtAutoNext = New System.Windows.Forms.TextBox()
@@ -70,7 +71,6 @@ Partial Class PropertiesForm
         Me.ColorDlg = New System.Windows.Forms.ColorDialog()
         Me.BtnClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ChkLoop = New System.Windows.Forms.CheckBox()
         Me.GrpAppearance.SuspendLayout()
         Me.GrpStartup.SuspendLayout()
         Me.GrpAdvanced.SuspendLayout()
@@ -437,6 +437,16 @@ Partial Class PropertiesForm
         Me.GrpAdvanced.TabStop = False
         Me.GrpAdvanced.Text = "高级"
         '
+        'ChkLoop
+        '
+        Me.ChkLoop.AutoSize = True
+        Me.ChkLoop.Location = New System.Drawing.Point(10, 146)
+        Me.ChkLoop.Name = "ChkLoop"
+        Me.ChkLoop.Size = New System.Drawing.Size(89, 19)
+        Me.ChkLoop.TabIndex = 88
+        Me.ChkLoop.Text = "循环播放"
+        Me.ChkLoop.UseVisualStyleBackColor = True
+        '
         'ChkDevTools
         '
         Me.ChkDevTools.AutoSize = True
@@ -545,19 +555,9 @@ Partial Class PropertiesForm
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(305, 417)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(196, 15)
+        Me.Label1.Size = New System.Drawing.Size(180, 15)
         Me.Label1.TabIndex = 59
-        Me.Label1.Text = "/!\部分选项需要重启后生效"
-        '
-        'ChkLoop
-        '
-        Me.ChkLoop.AutoSize = True
-        Me.ChkLoop.Location = New System.Drawing.Point(10, 146)
-        Me.ChkLoop.Name = "ChkLoop"
-        Me.ChkLoop.Size = New System.Drawing.Size(89, 19)
-        Me.ChkLoop.TabIndex = 88
-        Me.ChkLoop.Text = "循环播放"
-        Me.ChkLoop.UseVisualStyleBackColor = True
+        Me.Label1.Text = "*部分选项需要重启后生效"
         '
         'PropertiesForm
         '

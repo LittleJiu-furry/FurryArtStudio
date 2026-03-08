@@ -226,7 +226,7 @@
     <value>{0} 個稿件</value>
   </data>
   <data name="Main_LblStorage" xml:space="preserve">
-    <value>儲存空間: {0}（{1} 個檔案）</value>
+    <value>儲存空間: {0} ({1} 個檔案)</value>
   </data>
   <data name="Main_LblPage1" xml:space="preserve">
     <value>頁碼: 1/{0}</value>
@@ -592,7 +592,7 @@
     <value>確定(&amp;O)</value>
   </data>
   <data name="Main_LblSearchedMs" xml:space="preserve">
-    <value>已搜尋{0}個稿件</value>
+    <value>已搜尋 {0} 個稿件</value>
   </data>
   <data name="Msg_CheckingUpdate" xml:space="preserve">
     <value>正在檢查更新...</value>
@@ -608,5 +608,11 @@
   </data>
   <data name="Msg_DownloadNow" xml:space="preserve">
     <value>是否現在下載?</value>
+  </data>
+  <data name="Print_Horizontal" xml:space="preserve">
+    <value>橫向</value>
+  </data>
+  <data name="Print_Vertical" xml:space="preserve">
+    <value>直向</value>
   </data>
 </root>

@@ -46,9 +46,9 @@ Public Class PrintForm
         txtBottom.Text = "25"
         txtLeft.Text = "25"
         txtRight.Text = "25"
-        rbHorizonal.Checked = True
+        RbHorizonal.Checked = True
         '绑定事件
-        AddHandler btnPrint.Click, AddressOf BtnPrint_Click
+        AddHandler BtnPrint.Click, AddressOf BtnPrint_Click
     End Sub
 
 #Region "打印机与纸张设置"
@@ -145,15 +145,29 @@ Public Class PrintForm
     Private Sub PrintForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadPrinters()
         LoadPaperSizes(cbPrinter.Text)
-        SystemThemeChange()
         Dim MnuHandle = GetSystemMenu(Handle, False) '获取菜单句柄
         RemoveMenu(MnuHandle, SC_RESTORE, MF_BYCOMMAND) '去除还原菜单
         RemoveMenu(MnuHandle, SC_MAXIMIZE, MF_BYCOMMAND) '去除最大化菜单
         RemoveMenu(MnuHandle, SC_SIZE, MF_BYCOMMAND) '去除大小菜单
         RemoveMenu(MnuHandle, SC_MINIMIZE, MF_BYCOMMAND) '去除最小化菜单
+        LanguageChange()
+        SystemThemeChange()
     End Sub
     Private Sub LanguageChange() Implements ILocalizable.LanguageChange
-
+        Text = My.Resources.Print_Title
+        LblPrinter.Text = My.Resources.Print_LblPrinter
+        LblCopies.Text = My.Resources.Print_LblCount
+        LblPaper.Text = My.Resources.Print_LblPaper
+        LblTop.Text = My.Resources.Print_LblTop
+        LblBottom.Text = My.Resources.Print_LblBottom
+        LblLeft.Text = My.Resources.Print_LblLeft
+        LblRight.Text = My.Resources.Print_LblRight
+        LblLayout.Text = My.Resources.Print_LblType
+        BtnPrint.Text = My.Resources.Print_BtnPrint
+        BtnCancel.Text = My.Resources.Print_BtnCancel
+        BtnPrinterSetup.Text = My.Resources.Print_PrinterManager
+        RbVertical.Text = My.Resources.Print_Vertical
+        RbHorizonal.Text = My.Resources.Print_Horizontal
     End Sub
     Private Sub SystemThemeChange() Implements IThemeChangeable.SystemThemeChange
         '颜色常量
@@ -182,7 +196,7 @@ Public Class PrintForm
         SetPreferredAppMode(If(IsDarkMode(), PreferredAppMode.AllowDark, PreferredAppMode.ForceLight))
         FlushMenuThemes()
     End Sub
-    Private Sub BtnPrinterSetup_Click(sender As Object, e As EventArgs) Handles btnPrinterSetup.Click
+    Private Sub BtnPrinterSetup_Click(sender As Object, e As EventArgs) Handles BtnPrinterSetup.Click
         Dim isShiftPressed As Boolean = My.Computer.Keyboard.ShiftKeyDown
         If isShiftPressed Then
             Process.Start("control", "printers")
@@ -210,7 +224,7 @@ Public Class PrintForm
             Next
         End If
         '设置方向
-        pageSettings.Landscape = rbHorizonal.Checked
+        pageSettings.Landscape = RbHorizonal.Checked
         '设置边距(转换为百分之一英寸)
         pageSettings.Margins = New Margins(
             CInt(txtLeft.Text),

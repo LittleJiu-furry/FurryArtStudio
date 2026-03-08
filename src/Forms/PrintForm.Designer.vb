@@ -23,243 +23,243 @@ Partial Class PrintForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.cbPrinter = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnPrint = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.LblPrinter = New System.Windows.Forms.Label()
+        Me.BtnPrint = New System.Windows.Forms.Button()
+        Me.BtnCancel = New System.Windows.Forms.Button()
         Me.txtPrintCount = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LblCopies = New System.Windows.Forms.Label()
         Me.cbPaper = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnPrinterSetup = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.LblPaper = New System.Windows.Forms.Label()
+        Me.BtnPrinterSetup = New System.Windows.Forms.Button()
+        Me.LblLayout = New System.Windows.Forms.Label()
         Me.txtTop = New System.Windows.Forms.TextBox()
         Me.txtBottom = New System.Windows.Forms.TextBox()
         Me.txtLeft = New System.Windows.Forms.TextBox()
         Me.txtRight = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.rbVertical = New System.Windows.Forms.RadioButton()
-        Me.rbHorizonal = New System.Windows.Forms.RadioButton()
+        Me.LblTop = New System.Windows.Forms.Label()
+        Me.LblLeft = New System.Windows.Forms.Label()
+        Me.LblBottom = New System.Windows.Forms.Label()
+        Me.LblRight = New System.Windows.Forms.Label()
+        Me.RbVertical = New System.Windows.Forms.RadioButton()
+        Me.RbHorizonal = New System.Windows.Forms.RadioButton()
         Me.SuspendLayout()
         '
         'cbPrinter
         '
         Me.cbPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbPrinter.FormattingEnabled = True
-        Me.cbPrinter.Location = New System.Drawing.Point(70, 6)
+        Me.cbPrinter.Location = New System.Drawing.Point(80, 6)
         Me.cbPrinter.Name = "cbPrinter"
-        Me.cbPrinter.Size = New System.Drawing.Size(400, 23)
+        Me.cbPrinter.Size = New System.Drawing.Size(410, 23)
         Me.cbPrinter.TabIndex = 1
         '
-        'Label1
+        'LblPrinter
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(8, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(60, 15)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "打印机:"
+        Me.LblPrinter.AutoSize = True
+        Me.LblPrinter.Location = New System.Drawing.Point(8, 9)
+        Me.LblPrinter.Name = "LblPrinter"
+        Me.LblPrinter.Size = New System.Drawing.Size(60, 15)
+        Me.LblPrinter.TabIndex = 1
+        Me.LblPrinter.Text = "打印机:"
         '
-        'btnPrint
+        'BtnPrint
         '
-        Me.btnPrint.Location = New System.Drawing.Point(246, 143)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(109, 49)
-        Me.btnPrint.TabIndex = 11
-        Me.btnPrint.Text = "打印(&P)"
-        Me.btnPrint.UseVisualStyleBackColor = True
+        Me.BtnPrint.Location = New System.Drawing.Point(266, 143)
+        Me.BtnPrint.Name = "BtnPrint"
+        Me.BtnPrint.Size = New System.Drawing.Size(109, 49)
+        Me.BtnPrint.TabIndex = 11
+        Me.BtnPrint.Text = "打印(&P)"
+        Me.BtnPrint.UseVisualStyleBackColor = True
         '
-        'btnCancel
+        'BtnCancel
         '
-        Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCancel.Location = New System.Drawing.Point(361, 143)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(109, 49)
-        Me.btnCancel.TabIndex = 12
-        Me.btnCancel.Text = "取消(&C)"
-        Me.btnCancel.UseVisualStyleBackColor = True
+        Me.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BtnCancel.Location = New System.Drawing.Point(381, 143)
+        Me.BtnCancel.Name = "BtnCancel"
+        Me.BtnCancel.Size = New System.Drawing.Size(109, 49)
+        Me.BtnCancel.TabIndex = 12
+        Me.BtnCancel.Text = "取消(&C)"
+        Me.BtnCancel.UseVisualStyleBackColor = True
         '
         'txtPrintCount
         '
         Me.txtPrintCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPrintCount.Location = New System.Drawing.Point(70, 39)
+        Me.txtPrintCount.Location = New System.Drawing.Point(80, 39)
         Me.txtPrintCount.MaxLength = 2
         Me.txtPrintCount.Name = "txtPrintCount"
-        Me.txtPrintCount.Size = New System.Drawing.Size(86, 25)
+        Me.txtPrintCount.Size = New System.Drawing.Size(80, 25)
         Me.txtPrintCount.TabIndex = 2
         Me.txtPrintCount.Text = "1"
         '
-        'Label2
+        'LblCopies
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(23, 42)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(45, 15)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "份数:"
+        Me.LblCopies.AutoSize = True
+        Me.LblCopies.Location = New System.Drawing.Point(8, 41)
+        Me.LblCopies.Name = "LblCopies"
+        Me.LblCopies.Size = New System.Drawing.Size(45, 15)
+        Me.LblCopies.TabIndex = 5
+        Me.LblCopies.Text = "份数:"
         '
         'cbPaper
         '
         Me.cbPaper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbPaper.FormattingEnabled = True
-        Me.cbPaper.Location = New System.Drawing.Point(226, 41)
+        Me.cbPaper.Location = New System.Drawing.Point(246, 41)
         Me.cbPaper.Name = "cbPaper"
         Me.cbPaper.Size = New System.Drawing.Size(244, 23)
         Me.cbPaper.TabIndex = 3
         '
-        'Label3
+        'LblPaper
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(179, 44)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(45, 15)
-        Me.Label3.TabIndex = 7
-        Me.Label3.Text = "纸张:"
+        Me.LblPaper.AutoSize = True
+        Me.LblPaper.Location = New System.Drawing.Point(174, 44)
+        Me.LblPaper.Name = "LblPaper"
+        Me.LblPaper.Size = New System.Drawing.Size(45, 15)
+        Me.LblPaper.TabIndex = 7
+        Me.LblPaper.Text = "纸张:"
         '
-        'btnPrinterSetup
+        'BtnPrinterSetup
         '
-        Me.btnPrinterSetup.Location = New System.Drawing.Point(15, 143)
-        Me.btnPrinterSetup.Name = "btnPrinterSetup"
-        Me.btnPrinterSetup.Size = New System.Drawing.Size(141, 49)
-        Me.btnPrinterSetup.TabIndex = 10
-        Me.btnPrinterSetup.Text = "打印机管理(&M)"
-        Me.btnPrinterSetup.UseVisualStyleBackColor = True
+        Me.BtnPrinterSetup.Location = New System.Drawing.Point(15, 143)
+        Me.BtnPrinterSetup.Name = "BtnPrinterSetup"
+        Me.BtnPrinterSetup.Size = New System.Drawing.Size(141, 49)
+        Me.BtnPrinterSetup.TabIndex = 10
+        Me.BtnPrinterSetup.Text = "打印机管理(&M)"
+        Me.BtnPrinterSetup.UseVisualStyleBackColor = True
         '
-        'Label4
+        'LblLayout
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(341, 76)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(45, 15)
-        Me.Label4.TabIndex = 10
-        Me.Label4.Text = "布局:"
+        Me.LblLayout.AutoSize = True
+        Me.LblLayout.Location = New System.Drawing.Point(332, 76)
+        Me.LblLayout.Name = "LblLayout"
+        Me.LblLayout.Size = New System.Drawing.Size(45, 15)
+        Me.LblLayout.TabIndex = 10
+        Me.LblLayout.Text = "布局:"
         '
         'txtTop
         '
         Me.txtTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTop.Location = New System.Drawing.Point(70, 73)
+        Me.txtTop.Location = New System.Drawing.Point(80, 73)
         Me.txtTop.MaxLength = 5
         Me.txtTop.Name = "txtTop"
-        Me.txtTop.Size = New System.Drawing.Size(86, 25)
+        Me.txtTop.Size = New System.Drawing.Size(80, 25)
         Me.txtTop.TabIndex = 6
         Me.txtTop.Text = "25"
         '
         'txtBottom
         '
         Me.txtBottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtBottom.Location = New System.Drawing.Point(226, 73)
+        Me.txtBottom.Location = New System.Drawing.Point(246, 73)
         Me.txtBottom.MaxLength = 5
         Me.txtBottom.Name = "txtBottom"
-        Me.txtBottom.Size = New System.Drawing.Size(86, 25)
+        Me.txtBottom.Size = New System.Drawing.Size(80, 25)
         Me.txtBottom.TabIndex = 7
         Me.txtBottom.Text = "25"
         '
         'txtLeft
         '
         Me.txtLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtLeft.Location = New System.Drawing.Point(70, 106)
+        Me.txtLeft.Location = New System.Drawing.Point(80, 106)
         Me.txtLeft.MaxLength = 5
         Me.txtLeft.Name = "txtLeft"
-        Me.txtLeft.Size = New System.Drawing.Size(86, 25)
+        Me.txtLeft.Size = New System.Drawing.Size(80, 25)
         Me.txtLeft.TabIndex = 8
         Me.txtLeft.Text = "25"
         '
         'txtRight
         '
         Me.txtRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtRight.Location = New System.Drawing.Point(226, 106)
+        Me.txtRight.Location = New System.Drawing.Point(246, 106)
         Me.txtRight.MaxLength = 5
         Me.txtRight.Name = "txtRight"
-        Me.txtRight.Size = New System.Drawing.Size(86, 25)
+        Me.txtRight.Size = New System.Drawing.Size(80, 25)
         Me.txtRight.TabIndex = 9
         Me.txtRight.Text = "25"
         '
-        'Label5
+        'LblTop
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(8, 76)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(60, 15)
-        Me.Label5.TabIndex = 15
-        Me.Label5.Text = "上边距:"
+        Me.LblTop.AutoSize = True
+        Me.LblTop.Location = New System.Drawing.Point(8, 76)
+        Me.LblTop.Name = "LblTop"
+        Me.LblTop.Size = New System.Drawing.Size(60, 15)
+        Me.LblTop.TabIndex = 15
+        Me.LblTop.Text = "上边距:"
         '
-        'Label6
+        'LblLeft
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(8, 109)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(60, 15)
-        Me.Label6.TabIndex = 16
-        Me.Label6.Text = "左边距:"
+        Me.LblLeft.AutoSize = True
+        Me.LblLeft.Location = New System.Drawing.Point(8, 109)
+        Me.LblLeft.Name = "LblLeft"
+        Me.LblLeft.Size = New System.Drawing.Size(60, 15)
+        Me.LblLeft.TabIndex = 16
+        Me.LblLeft.Text = "左边距:"
         '
-        'Label7
+        'LblBottom
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(164, 76)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(60, 15)
-        Me.Label7.TabIndex = 17
-        Me.Label7.Text = "下边距:"
+        Me.LblBottom.AutoSize = True
+        Me.LblBottom.Location = New System.Drawing.Point(174, 76)
+        Me.LblBottom.Name = "LblBottom"
+        Me.LblBottom.Size = New System.Drawing.Size(60, 15)
+        Me.LblBottom.TabIndex = 17
+        Me.LblBottom.Text = "下边距:"
         '
-        'Label8
+        'LblRight
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(164, 109)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(60, 15)
-        Me.Label8.TabIndex = 18
-        Me.Label8.Text = "右边距:"
+        Me.LblRight.AutoSize = True
+        Me.LblRight.Location = New System.Drawing.Point(174, 109)
+        Me.LblRight.Name = "LblRight"
+        Me.LblRight.Size = New System.Drawing.Size(60, 15)
+        Me.LblRight.TabIndex = 18
+        Me.LblRight.Text = "右边距:"
         '
-        'rbVertical
+        'RbVertical
         '
-        Me.rbVertical.AutoSize = True
-        Me.rbVertical.Location = New System.Drawing.Point(396, 74)
-        Me.rbVertical.Name = "rbVertical"
-        Me.rbVertical.Size = New System.Drawing.Size(58, 19)
-        Me.rbVertical.TabIndex = 4
-        Me.rbVertical.Text = "纵向"
-        Me.rbVertical.UseVisualStyleBackColor = True
+        Me.RbVertical.AutoSize = True
+        Me.RbVertical.Location = New System.Drawing.Point(407, 74)
+        Me.RbVertical.Name = "RbVertical"
+        Me.RbVertical.Size = New System.Drawing.Size(58, 19)
+        Me.RbVertical.TabIndex = 4
+        Me.RbVertical.Text = "纵向"
+        Me.RbVertical.UseVisualStyleBackColor = True
         '
-        'rbHorizonal
+        'RbHorizonal
         '
-        Me.rbHorizonal.AutoSize = True
-        Me.rbHorizonal.Checked = True
-        Me.rbHorizonal.Location = New System.Drawing.Point(396, 107)
-        Me.rbHorizonal.Name = "rbHorizonal"
-        Me.rbHorizonal.Size = New System.Drawing.Size(58, 19)
-        Me.rbHorizonal.TabIndex = 5
-        Me.rbHorizonal.TabStop = True
-        Me.rbHorizonal.Text = "横向"
-        Me.rbHorizonal.UseVisualStyleBackColor = True
+        Me.RbHorizonal.AutoSize = True
+        Me.RbHorizonal.Checked = True
+        Me.RbHorizonal.Location = New System.Drawing.Point(407, 107)
+        Me.RbHorizonal.Name = "RbHorizonal"
+        Me.RbHorizonal.Size = New System.Drawing.Size(58, 19)
+        Me.RbHorizonal.TabIndex = 5
+        Me.RbHorizonal.TabStop = True
+        Me.RbHorizonal.Text = "横向"
+        Me.RbHorizonal.UseVisualStyleBackColor = True
         '
         'PrintForm
         '
-        Me.AcceptButton = Me.btnPrint
+        Me.AcceptButton = Me.BtnPrint
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.btnCancel
-        Me.ClientSize = New System.Drawing.Size(482, 203)
-        Me.Controls.Add(Me.rbHorizonal)
-        Me.Controls.Add(Me.rbVertical)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label5)
+        Me.CancelButton = Me.BtnCancel
+        Me.ClientSize = New System.Drawing.Size(502, 203)
+        Me.Controls.Add(Me.RbHorizonal)
+        Me.Controls.Add(Me.RbVertical)
+        Me.Controls.Add(Me.LblRight)
+        Me.Controls.Add(Me.LblBottom)
+        Me.Controls.Add(Me.LblLeft)
+        Me.Controls.Add(Me.LblTop)
         Me.Controls.Add(Me.txtRight)
         Me.Controls.Add(Me.txtLeft)
         Me.Controls.Add(Me.txtBottom)
         Me.Controls.Add(Me.txtTop)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.btnPrinterSetup)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.LblLayout)
+        Me.Controls.Add(Me.BtnPrinterSetup)
+        Me.Controls.Add(Me.LblPaper)
         Me.Controls.Add(Me.cbPaper)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.LblCopies)
         Me.Controls.Add(Me.txtPrintCount)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnPrint)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.BtnCancel)
+        Me.Controls.Add(Me.BtnPrint)
+        Me.Controls.Add(Me.LblPrinter)
         Me.Controls.Add(Me.cbPrinter)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
@@ -274,23 +274,23 @@ Partial Class PrintForm
     End Sub
 
     Friend WithEvents cbPrinter As ComboBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents btnPrint As Button
-    Friend WithEvents btnCancel As Button
+    Friend WithEvents LblPrinter As Label
+    Friend WithEvents BtnPrint As Button
+    Friend WithEvents BtnCancel As Button
     Friend WithEvents txtPrintCount As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents LblCopies As Label
     Friend WithEvents cbPaper As ComboBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents btnPrinterSetup As Button
-    Friend WithEvents Label4 As Label
+    Friend WithEvents LblPaper As Label
+    Friend WithEvents BtnPrinterSetup As Button
+    Friend WithEvents LblLayout As Label
     Friend WithEvents txtTop As TextBox
     Friend WithEvents txtBottom As TextBox
     Friend WithEvents txtLeft As TextBox
     Friend WithEvents txtRight As TextBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents rbVertical As RadioButton
-    Friend WithEvents rbHorizonal As RadioButton
+    Friend WithEvents LblTop As Label
+    Friend WithEvents LblLeft As Label
+    Friend WithEvents LblBottom As Label
+    Friend WithEvents LblRight As Label
+    Friend WithEvents RbVertical As RadioButton
+    Friend WithEvents RbHorizonal As RadioButton
 End Class

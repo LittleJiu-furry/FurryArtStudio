@@ -223,7 +223,7 @@
     <value>请选择一个项目</value>
   </data>
   <data name="Main_LblMs" xml:space="preserve">
-    <value>{0}个稿件</value>
+    <value>{0} 个稿件</value>
   </data>
   <data name="Main_LblStorage" xml:space="preserve">
     <value>存储: {0} ({1} 个文件)</value>
@@ -262,7 +262,7 @@
     <value>正在克隆稿件库...</value>
   </data>
   <data name="Input_TxtClone" xml:space="preserve">
-    <value>{0}的副本</value>
+    <value>{0} 的副本</value>
   </data>
   <data name="Stat_Closing" xml:space="preserve">
     <value>正在关闭稿件库...</value>
@@ -346,19 +346,19 @@
     <value>无法加载图片: {0}</value>
   </data>
   <data name="Msg_MultiFolderOpen" xml:space="preserve">
-    <value>您将同时打开{0}个文件夹, 确定要继续吗?</value>
+    <value>您将同时打开 {0} 个文件夹, 确定要继续吗?</value>
   </data>
   <data name="Stat_DeletingMs" xml:space="preserve">
     <value>正在删除稿件...</value>
   </data>
   <data name="Msg_DeleteMsPermanently" xml:space="preserve">
-    <value>确实要永久性的删除{0}项稿件吗?</value>
+    <value>确实要永久性的删除 {0} 项稿件吗?</value>
   </data>
   <data name="Msg_DeleteMsCount" xml:space="preserve">
-    <value>...等{0}个项目</value>
+    <value>...等 {0} 个项目</value>
   </data>
   <data name="Msg_DeleteMs" xml:space="preserve">
-    <value>确实要将这{0}项放入回收站吗?</value>
+    <value>确实要将这 {0} 项放入回收站吗?</value>
   </data>
   <data name="Msg_StrMsInfo" xml:space="preserve">
     <value>## 稿件信息:</value>
@@ -424,7 +424,7 @@
     <value>已选: {0}/{1}</value>
   </data>
   <data name="Main_LblTitleSelect" xml:space="preserve">
-    <value>已选择{0}个项目</value>
+    <value>已选择 {0} 个项目</value>
   </data>
   <data name="Main_LblPage" xml:space="preserve">
     <value>页码: {0}/{1}</value>
@@ -592,7 +592,7 @@
     <value>确定(&amp;O)</value>
   </data>
   <data name="Main_LblSearchedMs" xml:space="preserve">
-    <value>已搜到{0}个稿件</value>
+    <value>已搜到 {0} 个稿件</value>
   </data>
   <data name="Msg_CheckingUpdate" xml:space="preserve">
     <value>正在检查更新...</value>
@@ -608,5 +608,11 @@
   </data>
   <data name="Msg_DownloadNow" xml:space="preserve">
     <value>是否现在下载?</value>
+  </data>
+  <data name="Print_Horizontal" xml:space="preserve">
+    <value>横向</value>
+  </data>
+  <data name="Print_Vertical" xml:space="preserve">
+    <value>竖向</value>
   </data>
 </root>

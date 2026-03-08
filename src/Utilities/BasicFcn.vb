@@ -534,7 +534,6 @@ Module BasicFcn
     ''' <summary>
     ''' 获得版本号
     ''' </summary>
-    ''' <returns></returns>
     Public Function GetCurrentVersion() As String
         Dim version = Assembly.GetExecutingAssembly().GetName().Version
         Return $"v{version.Major}.{version.Minor}.{version.Build}"
@@ -545,6 +544,12 @@ Module BasicFcn
     Public Function GetForeColor(backcolor As Color)
         Dim brightness As Double = (0.299 * backcolor.R + 0.587 * backcolor.G + 0.114 * backcolor.B)
         Return If(brightness > 128, Color.Black, Color.White)
+    End Function
+    ''' <summary>
+    ''' 判断程序是否首次运行
+    ''' </summary>
+    Public Function IsFirstRun() As Boolean
+        Return Not File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AppSettings.json"))
     End Function
 #End Region
 

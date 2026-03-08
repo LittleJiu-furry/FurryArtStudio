@@ -457,16 +457,16 @@
     <value>Printer &amp;Manager</value>
   </data>
   <data name="Print_LblTop" xml:space="preserve">
-    <value>Top margin:</value>
+    <value>Top:</value>
   </data>
   <data name="Print_LblBottom" xml:space="preserve">
-    <value>Bottom margin:</value>
+    <value>Bottom:</value>
   </data>
   <data name="Print_LblLeft" xml:space="preserve">
-    <value>Left margin:</value>
+    <value>Left:</value>
   </data>
   <data name="Print_LblRight" xml:space="preserve">
-    <value>Right margin:</value>
+    <value>Right:</value>
   </data>
   <data name="Mnu_DevTools" xml:space="preserve">
     <value>&amp;Developer Tools...</value>
@@ -608,5 +608,11 @@
   </data>
   <data name="Msg_DownloadNow" xml:space="preserve">
     <value>Download now?</value>
+  </data>
+  <data name="Print_Horizontal" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="Print_Vertical" xml:space="preserve">
+    <value>Portrait</value>
   </data>
 </root>

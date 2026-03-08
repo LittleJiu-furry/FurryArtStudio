@@ -72,6 +72,17 @@ Public Class MainForm
         MnuDevTools.Enabled = False
 #End If
         Dim settings = AppSettings.Load() '读取设置项
+        If IsFirstRun() Then '当首次启动程序时
+            Dim systemCulture = CultureInfo.InstalledUICulture '检测当前系统语言, 并自动设置
+            Select Case systemCulture.Name '下次重构时, 考虑改为单独的函数
+                Case "zh-CN", "zh-SG"
+                    settings.Appearance.Language = AppSettings.LanguageOption.ChineseSimplified
+                Case "zh-TW", "zh-HK", "zh-MO"
+                    settings.Appearance.Language = AppSettings.LanguageOption.ChineseTraditional
+                Case Else
+                    settings.Appearance.Language = AppSettings.LanguageOption.English
+            End Select
+        End If
         Select Case settings.Appearance.Language
             Case AppSettings.LanguageOption.English
                 SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
@@ -79,22 +90,14 @@ Public Class MainForm
                 SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("zh-Hans")
             Case AppSettings.LanguageOption.ChineseTraditional
                 SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("zh-Hant")
-            Case Else
-                '当没有符合条件的选项时, 则代表首次启动程序
-                Dim systemCulture = CultureInfo.InstalledUICulture '检测当前系统语言, 并自动设置
-                Select Case systemCulture.Name
-                    Case "zh-CN", "zh-SG"
-                        SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("zh-Hans")
-                    Case "zh-TW", "zh-HK", "zh-MO"
-                        SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("zh-Hant")
-                    Case Else
-                        SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
-                End Select
+            Case Else '回退
+                SysThreading.Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")
         End Select
         UpdateFormLang() '更新语言
         SystemThemeChange() '设置主题
         SetTitleBarColor(Handle, IconColorLight) '修改标题栏颜色(win11生效)
         Icon = Icon.FromHandle(My.Resources.Icons.FurryArtStudio.GetHicon)
+        settings.Save() '保存默认设置
         StatusLabel.Text = My.Resources.Stat_Ready '就绪
     End Sub
 
@@ -616,6 +619,8 @@ Public Class MainForm
         StatusLabel.Text = My.Resources.Stat_Ready
     End Sub
 #End Region
+
+#Region "菜单项"
 
 #Region "文件菜单项"
     Private Sub MnuOnTop_Click(sender As Object, e As EventArgs) Handles MnuOnTop.Click
@@ -1260,6 +1265,35 @@ Public Class MainForm
     End Sub
 #End Region
 
+#Region "弹出菜单"
+    Private Sub ConMnuMsView_Click(sender As Object, e As EventArgs) Handles ConMnuMsView.Click
+        MnuMsView.PerformClick()
+    End Sub
+    Private Sub ConMnuMsEdit_Click(sender As Object, e As EventArgs) Handles ConMnuMsEdit.Click
+        MnuMsEdit.PerformClick()
+    End Sub
+    Private Sub ConMnuMsExport_Click(sender As Object, e As EventArgs) Handles ConMnuMsExport.Click
+        MnuMsExport.PerformClick()
+    End Sub
+    Private Sub ConMnuMsPrint_Click(sender As Object, e As EventArgs) Handles ConMnuMsPrint.Click
+        MnuMsPrint.PerformClick()
+    End Sub
+    Private Sub ConMnuMsDelete_Click(sender As Object, e As EventArgs) Handles ConMnuMsDelete.Click
+        MnuMsDelete.PerformClick()
+    End Sub
+    Private Sub ConMnuMsOpenFolder_Click(sender As Object, e As EventArgs) Handles ConMnuMsOpenFolder.Click
+        MnuMsOpenFolder.PerformClick()
+    End Sub
+    Private Sub ConMnuMsCopy_Click(sender As Object, e As EventArgs) Handles ConMnuMsCopy.Click
+        MnuMsCopy.PerformClick()
+    End Sub
+    Private Sub ConMnuMsCopyPath_Click(sender As Object, e As EventArgs) Handles ConMnuMsCopyPath.Click
+        MnuMsCopyPath.PerformClick()
+    End Sub
+#End Region
+
+#End Region
+
 #Region "图片墙功能"
     Private Sub ClearSelect()
         MnuMsView.Enabled = False
@@ -1381,33 +1415,6 @@ Public Class MainForm
     Public Sub CloseLibrary()
         RaiseEvent LibraryClosed(Me, EventArgs.Empty) '触发库关闭事件, 通知所有图片窗口
         _openViewForms.Clear()
-    End Sub
-#End Region
-
-#Region "弹出菜单"
-    Private Sub ConMnuMsView_Click(sender As Object, e As EventArgs) Handles ConMnuMsView.Click
-        MnuMsView.PerformClick()
-    End Sub
-    Private Sub ConMnuMsEdit_Click(sender As Object, e As EventArgs) Handles ConMnuMsEdit.Click
-        MnuMsEdit.PerformClick()
-    End Sub
-    Private Sub ConMnuMsExport_Click(sender As Object, e As EventArgs) Handles ConMnuMsExport.Click
-        MnuMsExport.PerformClick()
-    End Sub
-    Private Sub ConMnuMsPrint_Click(sender As Object, e As EventArgs) Handles ConMnuMsPrint.Click
-        MnuMsPrint.PerformClick()
-    End Sub
-    Private Sub ConMnuMsDelete_Click(sender As Object, e As EventArgs) Handles ConMnuMsDelete.Click
-        MnuMsDelete.PerformClick()
-    End Sub
-    Private Sub ConMnuMsOpenFolder_Click(sender As Object, e As EventArgs) Handles ConMnuMsOpenFolder.Click
-        MnuMsOpenFolder.PerformClick()
-    End Sub
-    Private Sub ConMnuMsCopy_Click(sender As Object, e As EventArgs) Handles ConMnuMsCopy.Click
-        MnuMsCopy.PerformClick()
-    End Sub
-    Private Sub ConMnuMsCopyPath_Click(sender As Object, e As EventArgs) Handles ConMnuMsCopyPath.Click
-        MnuMsCopyPath.PerformClick()
     End Sub
 #End Region
 

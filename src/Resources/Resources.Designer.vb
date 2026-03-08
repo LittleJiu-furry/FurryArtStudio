@@ -1294,7 +1294,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Bottom margin: 的本地化字符串。
+        '''  查找类似 Landscape 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property Print_Horizontal() As String
+            Get
+                Return ResourceManager.GetString("Print_Horizontal", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似 Bottom: 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Print_LblBottom() As String
             Get
@@ -1312,7 +1321,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Left margin: 的本地化字符串。
+        '''  查找类似 Left: 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Print_LblLeft() As String
             Get
@@ -1339,7 +1348,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Right margin: 的本地化字符串。
+        '''  查找类似 Right: 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Print_LblRight() As String
             Get
@@ -1348,7 +1357,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 Top margin: 的本地化字符串。
+        '''  查找类似 Top: 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property Print_LblTop() As String
             Get
@@ -1380,6 +1389,15 @@ Namespace My.Resources
         Friend ReadOnly Property Print_Title() As String
             Get
                 Return ResourceManager.GetString("Print_Title", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似 Portrait 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property Print_Vertical() As String
+            Get
+                Return ResourceManager.GetString("Print_Vertical", resourceCulture)
             End Get
         End Property
         

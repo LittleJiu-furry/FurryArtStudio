@@ -2,9 +2,9 @@
 $scriptDir = $PSScriptRoot # 脚本路径
 $projectRoot = Join-Path $scriptDir ".." -Resolve # 项目根目录
 
-$assemblyInfoPath = Join-Path $projectRoot "My Project" "AssemblyInfo.vb"
-$whatsNewPath = Join-Path $projectRoot "src" "Docs" "WHATSNEW.txt"
-$changelogPath = Join-Path $projectRoot "docs" "CHANGELOG.txt"
+$assemblyInfoPath = "$projectRoot\My Project\AssemblyInfo.vb"
+$whatsNewPath = "$projectRoot\src\Docs\WHATSNEW.txt"
+$changelogPath = "$projectRoot\docs\CHANGELOG.txt"
 
 $assemblyInfo = Get-Content $assemblyInfoPath
 

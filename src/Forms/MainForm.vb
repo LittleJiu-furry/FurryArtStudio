@@ -71,8 +71,9 @@ Public Class MainForm
 #Else
         MnuDevTools.Enabled = False
 #End If
+        Dim autoChangeLang As Boolean = IsFirstRun() '判断程序是否首次启动
         Dim settings = AppSettings.Load() '读取设置项
-        If IsFirstRun() Then '当首次启动程序时
+        If autoChangeLang Then '当首次启动程序时
             Dim systemCulture = CultureInfo.InstalledUICulture '检测当前系统语言, 并自动设置
             Select Case systemCulture.Name '下次重构时, 考虑改为单独的函数
                 Case "zh-CN", "zh-SG"

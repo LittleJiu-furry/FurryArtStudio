@@ -16,12 +16,12 @@ Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
+Imports System.Globalization
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
 Imports Krypton.Toolkit
 Imports SysThreading = System.Threading
-Imports System.Globalization
 
 Public Class MainForm
     Implements IThemeChangeable, ILocalizable
@@ -244,13 +244,39 @@ Public Class MainForm
         '窗体
         UpdateMenuItem()
         Dim settings = AppSettings.Load()
-        If settings.Appearance.MenuUppercase Then
+        If settings.Appearance.MenuUppercase Then '首字母大写
             MnuFile.Text = MnuFile.Text.ToUpper
             MnuLibrary.Text = MnuLibrary.Text.ToUpper
             MnuManuscript.Text = MnuManuscript.Text.ToUpper
             MnuViews.Text = MnuViews.Text.ToUpper
             MnuHelp.Text = MnuHelp.Text.ToUpper
         End If
+        Dim tf As Font
+        Select Case SysThreading.Thread.CurrentThread.CurrentUICulture.Name'根据语言设置菜单栏字体
+            Case "zh-Hant"
+                tf = New Font("Microsoft JhengHei", SystemFonts.MenuFont.Size) '繁体
+            Case "zh-Hans"
+                tf = New Font("Microsoft YaHei", SystemFonts.MenuFont.Size) '简体
+            Case Else
+                tf = SystemFonts.MenuFont
+        End Select
+        For Each item As ToolStripMenuItem In MnuStrip.Items
+            SetMenuFont(item, tf)
+        Next
+    End Sub
+    ''' <summary>
+    ''' 递归设置字体
+    ''' </summary>
+    ''' <param name="menu">菜单项</param>
+    ''' <param name="f">字体</param>
+    Private Sub SetMenuFont(menu As ToolStripMenuItem, f As Font)
+        menu.Font = f
+        For Each subItem As ToolStripItem In menu.DropDownItems
+            Dim menuItem As ToolStripMenuItem = TryCast(subItem, ToolStripMenuItem)
+            If menuItem IsNot Nothing Then
+                SetMenuFont(menuItem, f)
+            End If
+        Next
     End Sub
 
     ''' <summary>
@@ -1024,10 +1050,7 @@ Public Class MainForm
         End If
         Dim isShiftPressed As Boolean = My.Computer.Keyboard.ShiftKeyDown
         Dim nowArtwork As Artwork = _libraryManager.GetCurrentLibrary.GetArtworkByUUID(Guid.Parse(selectedItem(0).UUID))
-        Dim docName As String = $"{nowArtwork.Title} - {nowArtwork.Author}"
-        Dim defaultEncoding As System.Text.Encoding = System.Text.Encoding.Default
-        Dim nameBytes As Byte() = defaultEncoding.GetBytes(docName)
-        Dim ansiName As String = defaultEncoding.GetString(nameBytes)
+        Dim docName As String = $"{nowArtwork.Title} - {nowArtwork.Author}" '这里存在编码转换问题
         If isShiftPressed Then
             Dim pd As New PrintDocument With {
                 .DocumentName = docName,'标题 - 作者

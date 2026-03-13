@@ -61,7 +61,7 @@ jobs:
       with:
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
-        body_path: WHATSNEW.txt
+        body_path: src/Docs/WHATSNEW.txt
         files: |
           ./FurryArtStudio-${{ github.ref_name }}.zip
       env:

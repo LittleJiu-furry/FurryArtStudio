@@ -270,4 +270,36 @@ Public Module WinAPI
     End Function
 #End Region
 
+#Region "进程"
+    'ShellExecuteEx 函数 - 实现 Process 无法实现的功能
+    <DllImport("shell32.dll", CharSet:=CharSet.Auto, SetLastError:=True)>
+    Public Function ShellExecuteEx(ByRef lpExecInfo As SHELLEXECUTEINFO) As Boolean
+    End Function
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Auto)>
+    Public Structure SHELLEXECUTEINFO
+        Public cbSize As Integer
+        Public fMask As Integer
+        Public hwnd As IntPtr
+        <MarshalAs(UnmanagedType.LPTStr)>
+        Public lpVerb As String
+        <MarshalAs(UnmanagedType.LPTStr)>
+        Public lpFile As String
+        <MarshalAs(UnmanagedType.LPTStr)>
+        Public lpParameters As String
+        <MarshalAs(UnmanagedType.LPTStr)>
+        Public lpDirectory As String
+        Public nShow As Integer
+        Public hInstApp As IntPtr
+        Public lpIDList As IntPtr
+        <MarshalAs(UnmanagedType.LPTStr)>
+        Public lpClass As String
+        Public hkeyClass As IntPtr
+        Public dwHotKey As Integer
+        Public hIcon As IntPtr
+        Public hProcess As IntPtr
+    End Structure
+    Public Const SW_SHOW As Integer = 5
+    Public Const SEE_MASK_INVOKEIDLIST As Integer = &HC
+#End Region
+
 End Module

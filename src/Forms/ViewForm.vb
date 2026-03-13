@@ -12,6 +12,7 @@
 ' WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ' See the License for the specific language governing permissions and
 ' limitations under the License.
+Imports System.ComponentModel
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text.RegularExpressions
@@ -43,10 +44,11 @@ Public Class ViewForm
     Private Const SC_NEXTART = 4
     Private Const SC_ALWAYSONTOP = 5
     Private Const SC_COPY = 6
-    Private Const SC_INFO = 7
-    Private Const SC_PLAY = 8
-    Private Const SC_HELP = 9
-    Private Const SC_FULLSCREEN = 10
+    Private Const SC_PROP = 7
+    Private Const SC_INFO = 8
+    Private Const SC_PLAY = 9
+    Private Const SC_HELP = 10
+    Private Const SC_FULLSCREEN = 11
     Private Settings As AppSettings = AppSettings.Load()
 #End Region
 
@@ -129,11 +131,12 @@ Public Class ViewForm
         InsertMenu(menuHandle, 6, MF_BYPOSITION Or MF_STRING, SC_ALWAYSONTOP, "窗口置顶(&T)")
         InsertMenu(menuHandle, 7, MF_BYPOSITION Or MF_STRING, SC_COPY, "复制(&C)")
         InsertMenu(menuHandle, 8, MF_BYPOSITION Or MF_SEPARATOR, 0, Nothing)
-        InsertMenu(menuHandle, 9, MF_BYPOSITION Or MF_STRING, SC_INFO, "详情(&I)...")
-        InsertMenu(menuHandle, 10, MF_BYPOSITION Or MF_STRING, SC_PLAY, "幻灯片放映(&P)")
-        InsertMenu(menuHandle, 11, MF_BYPOSITION Or MF_STRING, SC_HELP, "帮助(&H)...")
-        InsertMenu(menuHandle, 12, MF_BYPOSITION Or MF_SEPARATOR, 0, Nothing)
-        InsertMenu(menuHandle, 13, MF_BYPOSITION Or MF_STRING, SC_FULLSCREEN, "全屏(&F)")
+        InsertMenu(menuHandle, 9, MF_BYPOSITION Or MF_STRING, SC_PROP, "文件属性(&R)")
+        InsertMenu(menuHandle, 10, MF_BYPOSITION Or MF_STRING, SC_INFO, "详情(&I)...")
+        InsertMenu(menuHandle, 11, MF_BYPOSITION Or MF_STRING, SC_PLAY, "幻灯片放映(&P)")
+        InsertMenu(menuHandle, 12, MF_BYPOSITION Or MF_STRING, SC_HELP, "帮助(&H)...")
+        InsertMenu(menuHandle, 13, MF_BYPOSITION Or MF_SEPARATOR, 0, Nothing)
+        InsertMenu(menuHandle, 14, MF_BYPOSITION Or MF_STRING, SC_FULLSCREEN, "全屏(&F)")
         '设置菜单项快捷键
         SetMenuItemWithShortcut(menuHandle, 0, SC_PREVIMG, "上一张(&P)", "PageUp")
         SetMenuItemWithShortcut(menuHandle, 1, SC_NEXTIMG, "下一张(&N)", "PageDown")
@@ -141,10 +144,11 @@ Public Class ViewForm
         SetMenuItemWithShortcut(menuHandle, 4, SC_NEXTART, "下一稿件(&E)", "Ctrl+Right")
         SetMenuItemWithShortcut(menuHandle, 6, SC_ALWAYSONTOP, "窗口置顶(&T)", "Alt+T")
         SetMenuItemWithShortcut(menuHandle, 7, SC_COPY, "复制(&C)", "Ctrl+C")
-        SetMenuItemWithShortcut(menuHandle, 9, SC_INFO, "详情(&I)...", "I")
-        SetMenuItemWithShortcut(menuHandle, 10, SC_PLAY, "幻灯片放映(&P)", "Ctrl+F5")
-        SetMenuItemWithShortcut(menuHandle, 11, SC_HELP, "帮助(&H)...", "F1")
-        SetMenuItemWithShortcut(menuHandle, 13, SC_FULLSCREEN, "全屏(&F)", "F11")
+        SetMenuItemWithShortcut(menuHandle, 9, SC_PROP, "文件属性(&R)", "Alt+Enter")
+        SetMenuItemWithShortcut(menuHandle, 10, SC_INFO, "详情(&I)...", "I")
+        SetMenuItemWithShortcut(menuHandle, 11, SC_PLAY, "幻灯片放映(&P)", "Ctrl+F5")
+        SetMenuItemWithShortcut(menuHandle, 12, SC_HELP, "帮助(&H)...", "F1")
+        SetMenuItemWithShortcut(menuHandle, 14, SC_FULLSCREEN, "全屏(&F)", "F11")
     End Sub
     Private Sub InitializeMenuImages(Optional isDarkMode As Boolean = False)
         Dim menuHandle = GetSystemMenu(Handle, False) '设置窗体菜单
@@ -155,6 +159,7 @@ Public Class ViewForm
             ApplyMenuIcon(menuHandle, SC_NEXTART, My.Resources.Icons.MenuRightDark, True)
             ApplyMenuIcon(menuHandle, SC_ALWAYSONTOP, My.Resources.Icons.MenuPinDark, True)
             ApplyMenuIcon(menuHandle, SC_COPY, My.Resources.Icons.MenuCopyDark, True)
+            ApplyMenuIcon(menuHandle, SC_PROP, My.Resources.Icons.FormFileDark, True)
             ApplyMenuIcon(menuHandle, SC_INFO, My.Resources.Icons.MenuInfoDark, True)
             ApplyMenuIcon(menuHandle, SC_PLAY, My.Resources.Icons.MenuImagePlayDark, True)
             ApplyMenuIcon(menuHandle, SC_HELP, My.Resources.Icons.MenuTutorialDark, True)
@@ -166,6 +171,7 @@ Public Class ViewForm
             ApplyMenuIcon(menuHandle, SC_NEXTART, My.Resources.Icons.MenuRightLight)
             ApplyMenuIcon(menuHandle, SC_ALWAYSONTOP, My.Resources.Icons.MenuPinLight)
             ApplyMenuIcon(menuHandle, SC_COPY, My.Resources.Icons.MenuCopyLight)
+            ApplyMenuIcon(menuHandle, SC_PROP, My.Resources.Icons.FormFileLight)
             ApplyMenuIcon(menuHandle, SC_INFO, My.Resources.Icons.MenuInfoLight)
             ApplyMenuIcon(menuHandle, SC_PLAY, My.Resources.Icons.MenuImagePlayLight)
             ApplyMenuIcon(menuHandle, SC_HELP, My.Resources.Icons.MenuTutorialLight)
@@ -174,6 +180,8 @@ Public Class ViewForm
     End Sub
     Protected Overrides Sub WndProc(ByRef m As Message) '窗体消息处理函数
         If m.Msg = WM_SYSCOMMAND Then '窗体响应菜单
+            Dim imageFiles As List(Of String) = GetCurrentArtworkImages()
+            Dim filePath As String = imageFiles(_currentFileIndex)
             Dim hMenu = GetSystemMenu(Handle, False)
             Select Case m.WParam.ToInt32'对应菜单标号
                 Case SC_PREVIMG '上一张
@@ -188,6 +196,8 @@ Public Class ViewForm
                     SetWindowOnTop()
                 Case SC_COPY '复制
                     Clipboard.SetImage(PictureBoxMain.Image)
+                Case SC_PROP '文件属性
+                    ShowProperties(filePath)
                 Case SC_INFO '详情
                     ShowArtworkInfo()
                 Case SC_PLAY'幻灯片放映
@@ -643,6 +653,12 @@ Public Class ViewForm
                     Clipboard.SetImage(PictureBoxMain.Image)
             End Select
         End If
+        If e.Alt And e.KeyCode = Keys.Enter Then
+            Dim imageFiles As List(Of String) = GetCurrentArtworkImages()
+            ShowProperties(imageFiles(_currentFileIndex))
+            e.Handled = True
+            e.SuppressKeyPress = True '防止发出声音
+        End If
         If e.Alt And e.KeyCode = Keys.T Then
             SetWindowOnTop()
             e.Handled = True
@@ -682,6 +698,25 @@ Public Class ViewForm
     '切换全屏模式
     Private Sub ToggleFullScreen()
         '全屏
+    End Sub
+    '打开属性
+    Private Sub ShowProperties(filePath As String)
+        Try
+            If String.IsNullOrEmpty(filePath) OrElse Not File.Exists(filePath) Then
+                Throw New FileNotFoundException("文件不存在或路径无效。")
+            End If
+            Dim info As New SHELLEXECUTEINFO()
+            info.cbSize = Marshal.SizeOf(info)
+            info.lpVerb = "properties"
+            info.lpFile = filePath
+            info.nShow = SW_SHOW
+            info.fMask = SEE_MASK_INVOKEIDLIST
+            If Not ShellExecuteEx(info) Then
+                Throw New Win32Exception(Marshal.GetLastWin32Error())
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"无法打开属性窗口: {ex.Message}", "FurryArtStudio", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub PictureBoxMain_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBoxMain.MouseDown
         If e.Button = MouseButtons.Left Then

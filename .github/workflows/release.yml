@@ -41,8 +41,7 @@ jobs:
         Copy-Item "$releasePath\*.dll" $packagePath
         Copy-Item "$releasePath\*.config" $packagePath
         # 复制子文件夹
-        Copy-Item -Recurse "$releasePath\x64" $packagePath
-        Copy-Item -Recurse "$releasePath\x86" $packagePath
+        Copy-Item -Recurse "$releasePath\x64\*.dll" $packagePath
         Copy-Item -Recurse "$releasePath\en-US" $packagePath
         Copy-Item -Recurse "$releasePath\zh-Hans" $packagePath
         Copy-Item -Recurse "$releasePath\zh-Hant" $packagePath
